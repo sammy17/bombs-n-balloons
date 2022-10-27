@@ -2,8 +2,8 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Thu Oct 27 17:02:18 2022
-# Process ID: 21336
+# Start of session at: Thu Oct 27 17:58:35 2022
+# Process ID: 15504
 # Current directory: X:/EC551/vga_demo/vga_demo.runs/synth_1
 # Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
 # Log file: X:/EC551/vga_demo/vga_demo.runs/synth_1/top.vds
@@ -16,14 +16,14 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 18608 
+INFO: Helper process launched with PID 11808 
 WARNING: [Synth 8-2369] multiple packed dimensions are not allowed in this mode of verilog [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/bl_colors.vh:3]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 825.664 ; gain = 183.715
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 825.711 ; gain = 181.891
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:25]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_1' [X:/EC551/vga_demo/vga_demo.runs/synth_1/.Xil/Vivado-21336-ECE-PHO115-26/realtime/clk_wiz_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_1' (1#1) [X:/EC551/vga_demo/vga_demo.runs/synth_1/.Xil/Vivado-21336-ECE-PHO115-26/realtime/clk_wiz_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_1' [X:/EC551/vga_demo/vga_demo.runs/synth_1/.Xil/Vivado-15504-ECE-PHO115-26/realtime/clk_wiz_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_1' (1#1) [X:/EC551/vga_demo/vga_demo.runs/synth_1/.Xil/Vivado-15504-ECE-PHO115-26/realtime/clk_wiz_1_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'LFSR' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:22]
 INFO: [Synth 8-6155] done synthesizing module 'LFSR' (2#1) [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:22]
 INFO: [Synth 8-6157] synthesizing module 'vga_controller_720_60' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_controller_1080.v:8]
@@ -38,16 +38,20 @@ INFO: [Synth 8-6157] synthesizing module 'vga_controller_720_60' [X:/EC551/vga_d
 	Parameter SPP bound to: 0 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'vga_controller_720_60' (3#1) [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_controller_1080.v:8]
 INFO: [Synth 8-6157] synthesizing module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:23]
-	Parameter RAD bound to: 50 - type: integer 
+	Parameter RAD bound to: 100 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'balloon' (4#1) [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:23]
-WARNING: [Synth 8-689] width (11) of port connection 'x' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:92]
-WARNING: [Synth 8-689] width (11) of port connection 'y' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:93]
-WARNING: [Synth 8-689] width (11) of port connection 'cx' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:94]
-WARNING: [Synth 8-689] width (11) of port connection 'x' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:102]
-WARNING: [Synth 8-689] width (11) of port connection 'y' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:103]
+WARNING: [Synth 8-689] width (11) of port connection 'x' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:93]
+WARNING: [Synth 8-689] width (11) of port connection 'y' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:94]
+WARNING: [Synth 8-689] width (11) of port connection 'cx' does not match port width (10) of module 'balloon' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:95]
+INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized0' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:23]
+	Parameter RAD bound to: 60 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized0' (4#1) [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:23]
+WARNING: [Synth 8-689] width (11) of port connection 'x' does not match port width (10) of module 'balloon__parameterized0' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:103]
+WARNING: [Synth 8-689] width (11) of port connection 'y' does not match port width (10) of module 'balloon__parameterized0' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:104]
+WARNING: [Synth 8-6014] Unused sequential element counter_reg was removed.  [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:116]
 INFO: [Synth 8-6155] done synthesizing module 'top' (5#1) [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:25]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 863.684 ; gain = 221.734
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 864.820 ; gain = 221.000
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -60,10 +64,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 863.684 ; gain = 221.734
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 864.820 ; gain = 221.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 863.684 ; gain = 221.734
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 864.820 ; gain = 221.000
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -77,20 +81,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1000.387 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1006.402 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 1000.387 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1006.402 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1000.387 ; gain = 358.438
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1006.402 ; gain = 362.582
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1000.387 ; gain = 358.438
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1006.402 ; gain = 362.582
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -99,14 +103,16 @@ Applied set_property IO_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  x:/E
 Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK100MHZ. (constraint file  x:/EC551/vga_demo/vga_demo.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1/clk_wiz_1_in_context.xdc, line 4).
 Applied set_property DONT_TOUCH = true for clk_div_74. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1000.387 ; gain = 358.438
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1006.402 ; gain = 362.582
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-327] inferring latch for variable 'random_done_reg' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:59]
 WARNING: [Synth 8-327] inferring latch for variable 'count_reg' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:51]
 WARNING: [Synth 8-327] inferring latch for variable 'color_reg' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:42]
 WARNING: [Synth 8-327] inferring latch for variable 'count_reg' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:41]
+WARNING: [Synth 8-327] inferring latch for variable 'color_reg' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:42]
+WARNING: [Synth 8-327] inferring latch for variable 'count_reg' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:41]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1000.387 ; gain = 358.438
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 1006.402 ; gain = 362.582
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -122,14 +128,14 @@ Detailed RTL Component Info :
 	   3 Input     32 Bit       Adders := 4     
 	   2 Input     32 Bit       Adders := 2     
 	   2 Input     11 Bit       Adders := 2     
-	   2 Input     10 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 2     
 	   2 Input      4 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 2     
 +---XORs : 
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
 	               11 Bit    Registers := 4     
-	               10 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
 	                1 Bit    Registers := 3     
 +---Multipliers : 
 	                32x32  Multipliers := 4     
@@ -137,7 +143,7 @@ Detailed RTL Component Info :
 	   3 Input     12 Bit        Muxes := 2     
 	   2 Input     11 Bit        Muxes := 2     
 	   2 Input      4 Bit        Muxes := 9     
-	   2 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -148,12 +154,13 @@ Hierarchical RTL Component report
 Module top 
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     10 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 2     
 +---Registers : 
 	               11 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input      4 Bit        Muxes := 9     
+	   2 Input      1 Bit        Muxes := 1     
 Module LFSR 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -183,6 +190,16 @@ Detailed RTL Component Info :
 	                32x32  Multipliers := 2     
 +---Muxes : 
 	   3 Input     12 Bit        Muxes := 1     
+Module balloon__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 2     
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---Multipliers : 
+	                32x32  Multipliers := 2     
++---Muxes : 
+	   3 Input     12 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -199,11 +216,14 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-WARNING: [Synth 8-3936] Found unconnected internal register 'x_loc_reg_reg' and it is trimmed from '11' to '10' bits. [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v:94]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:37]
 INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:37]
 INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:37]
 INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 4 [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v:37]
 DSP Report: Generating DSP b1/en1, operation Mode is: A*B.
+DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
+DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
+DSP Report: Generating DSP b1/en1, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: Generating DSP b1/en1, operation Mode is: A*B.
@@ -213,6 +233,9 @@ DSP Report: Generating DSP b1/en1, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: Generating DSP b1/en1, operation Mode is: A*B.
+DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
+DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
+DSP Report: Generating DSP b1/en1, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: Generating DSP b1/en1, operation Mode is: A*B.
@@ -222,6 +245,21 @@ DSP Report: Generating DSP b1/en1, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: operator b1/en1 is absorbed into DSP b1/en1.
 DSP Report: Generating DSP b2/en1, operation Mode is: A*B.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: Generating DSP b2/en1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: Generating DSP b2/en1, operation Mode is: A*B.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: Generating DSP b2/en1, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: Generating DSP b2/en1, operation Mode is: A*B.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
+DSP Report: Generating DSP b2/en1, operation Mode is: (PCIN>>17)+A*B.
 DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
 DSP Report: operator b2/en1 is absorbed into DSP b2/en1.
 DSP Report: Generating DSP b2/en1, operation Mode is: A*B.
@@ -236,10 +274,10 @@ INFO: [Synth 8-3886] merging instance 'b1/color_reg[1]' (LD) to 'b1/color_reg[2]
 INFO: [Synth 8-3886] merging instance 'b2/color_reg[1]' (LD) to 'b2/color_reg[2]'
 INFO: [Synth 8-3886] merging instance 'b1/color_reg[2]' (LD) to 'b1/color_reg[3]'
 INFO: [Synth 8-3886] merging instance 'b2/color_reg[2]' (LD) to 'b2/color_reg[3]'
-INFO: [Synth 8-3886] merging instance 'b1/color_reg[4]' (LD) to 'b1/color_reg[5]'
-INFO: [Synth 8-3886] merging instance 'b2/color_reg[4]' (LD) to 'b2/color_reg[5]'
-INFO: [Synth 8-3886] merging instance 'b1/color_reg[5]' (LD) to 'b1/color_reg[6]'
-INFO: [Synth 8-3886] merging instance 'b2/color_reg[5]' (LD) to 'b2/color_reg[6]'
+INFO: [Synth 8-3886] merging instance 'b1/color_reg[4]' (LD) to 'b1/color_reg[7]'
+INFO: [Synth 8-3886] merging instance 'b2/color_reg[4]' (LD) to 'b2/color_reg[7]'
+INFO: [Synth 8-3886] merging instance 'b1/color_reg[5]' (LD) to 'b1/color_reg[7]'
+INFO: [Synth 8-3886] merging instance 'b2/color_reg[5]' (LD) to 'b2/color_reg[7]'
 INFO: [Synth 8-3886] merging instance 'b1/color_reg[6]' (LD) to 'b1/color_reg[7]'
 INFO: [Synth 8-3886] merging instance 'b2/color_reg[6]' (LD) to 'b2/color_reg[7]'
 INFO: [Synth 8-3886] merging instance 'b1/color_reg[8]' (LD) to 'b1/color_reg[9]'
@@ -250,7 +288,7 @@ WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[10]) is unused 
 WARNING: [Synth 8-3332] Sequential element (b1/count_reg[2]) is unused and will be removed from module top.
 WARNING: [Synth 8-3332] Sequential element (b2/count_reg[2]) is unused and will be removed from module top.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:31 . Memory (MB): peak = 1023.129 ; gain = 381.180
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 1006.402 ; gain = 362.582
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -261,14 +299,21 @@ DSP: Preliminary Mapping  Report (see note below)
 |Module Name | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |top         | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |top         | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|top         | (PCIN>>17)+A*B | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|top         | A*B            | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|top         | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|top         | (PCIN>>17)+A*B | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |top         | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |top         | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|top         | (PCIN>>17)+A*B | 15     | 15     | -      | -      | 15     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | A*B            | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 16     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | A*B            | 18     | 18     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|top         | (PCIN>>17)+A*B | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 +------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
@@ -287,13 +332,13 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'clk_div_74/clk_out1' to pin 'clk_div_74/bbstub_clk_out1/O'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:41 . Memory (MB): peak = 1030.391 ; gain = 388.441
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:29 . Memory (MB): peak = 1024.512 ; gain = 380.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:42 . Memory (MB): peak = 1053.902 ; gain = 411.953
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 1048.891 ; gain = 405.070
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -304,22 +349,8 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[9]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[8]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[7]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[6]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[5]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[4]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[3]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[2]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[1]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/random_done_reg[0]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/count_reg[3]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/count_reg[2]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/count_reg[1]) is unused and will be removed from module top.
-WARNING: [Synth 8-3332] Sequential element (lfsr/count_reg[0]) is unused and will be removed from module top.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:43 . Memory (MB): peak = 1055.555 ; gain = 413.605
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:31 . Memory (MB): peak = 1050.301 ; gain = 406.480
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -343,20 +374,28 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[3] with 1st driver pin 'lfsr/count_reg[3]__0/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[3] with 2nd driver pin 'lfsr/count_reg[3]/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:51]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[2] with 1st driver pin 'lfsr/count_reg[2]__0/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[2] with 2nd driver pin 'lfsr/count_reg[2]/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:51]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[1] with 1st driver pin 'lfsr/count_reg[1]__0/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[1] with 2nd driver pin 'lfsr/count_reg[1]/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:51]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[0] with 1st driver pin 'lfsr/count_reg[0]__0/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:38]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin lfsr/count__0[0] with 2nd driver pin 'lfsr/count_reg[0]/Q' [X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v:51]
 
 Report Check Netlist: 
 +------+------------------+-------+---------+-------+------------------+
 |      |Item              |Errors |Warnings |Status |Description       |
 +------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
+|1     |multi_driven_nets |      0|        4|Failed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -368,25 +407,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -404,51 +443,56 @@ Report Cell Usage:
 |      |Cell      |Count |
 +------+----------+------+
 |1     |clk_wiz_1 |     1|
-|2     |CARRY4    |    34|
-|3     |DSP48E1   |     9|
-|4     |LUT1      |    16|
-|5     |LUT2      |   131|
-|6     |LUT3      |     7|
-|7     |LUT4      |    20|
-|8     |LUT5      |    30|
-|9     |LUT6      |    27|
-|10    |FDRE      |    35|
-|11    |LD        |    12|
-|12    |OBUF      |    14|
+|2     |CARRY4    |    41|
+|3     |DSP48E1   |    12|
+|4     |LUT1      |     7|
+|5     |LUT2      |   170|
+|6     |LUT3      |    11|
+|7     |LUT4      |    23|
+|8     |LUT5      |    29|
+|9     |LUT6      |    35|
+|10    |FDCE      |    11|
+|11    |FDPE      |     4|
+|12    |FDRE      |    51|
+|13    |FDSE      |     4|
+|14    |LD        |    26|
+|15    |IBUF      |     1|
+|16    |OBUF      |    14|
 +------+----------+------+
 
 Report Instance Areas: 
-+------+-----------------+----------------------+------+
-|      |Instance         |Module                |Cells |
-+------+-----------------+----------------------+------+
-|1     |top              |                      |   336|
-|2     |  b1             |balloon               |   109|
-|3     |  b2             |balloon_0             |    85|
-|4     |  vga_controller |vga_controller_720_60 |   106|
-+------+-----------------+----------------------+------+
++------+-----------------+------------------------+------+
+|      |Instance         |Module                  |Cells |
++------+-----------------+------------------------+------+
+|1     |top              |                        |   440|
+|2     |  b1             |balloon                 |   112|
+|3     |  b2             |balloon__parameterized0 |   110|
+|4     |  lfsr           |LFSR                    |    35|
+|5     |  vga_controller |vga_controller_720_60   |   126|
++------+-----------------+------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 22 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:42 . Memory (MB): peak = 1061.344 ; gain = 282.691
-Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:45 . Memory (MB): peak = 1061.344 ; gain = 419.395
+Synthesis finished with 0 errors, 8 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:30 . Memory (MB): peak = 1055.082 ; gain = 269.680
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 1055.082 ; gain = 411.262
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 55 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Netlist 29-17] Analyzing 79 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1077.469 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1055.082 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 12 instances were transformed.
-  LD => LDCE: 12 instances
+  A total of 26 instances were transformed.
+  LD => LDCE: 26 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-43 Infos, 28 Warnings, 0 Critical Warnings and 0 Errors encountered.
+46 Infos, 16 Warnings, 8 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:54 . Memory (MB): peak = 1077.469 ; gain = 690.934
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1077.469 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:45 . Memory (MB): peak = 1055.082 ; gain = 668.598
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1055.082 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'X:/EC551/vga_demo/vga_demo.runs/synth_1/top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_utilization_synth.rpt -pb top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Oct 27 17:03:20 2022...
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 27 17:59:29 2022...

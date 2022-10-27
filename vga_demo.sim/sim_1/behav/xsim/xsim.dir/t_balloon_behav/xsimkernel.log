@@ -1,0 +1,4 @@
+Running: xsim.dir/t_balloon_behav/xsimk.exe -simmode gui -wdb t_balloon_behav.wdb -simrunnum 0 -socket 49831
+Design successfully loaded
+Design Loading Memory Usage: 6388 KB (Peak: 6388 KB)
+Design Loading CPU Usage: 171 ms

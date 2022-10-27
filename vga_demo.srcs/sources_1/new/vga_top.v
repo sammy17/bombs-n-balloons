@@ -18,12 +18,13 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
+`define B1_START 32'h00000100
 //`define RE640
 
 // top module that instantiates the VGA controller and generates images
 module top(
  input wire CLK100MHZ,
+ input wire reset,
  output reg [3:0] VGA_R,
  output reg [3:0] VGA_G,
  output reg [3:0] VGA_B,
@@ -40,10 +41,10 @@ wire [10:0] vga_hcnt, vga_vcnt;
 wire vga_blank;
 wire [11:0] b1_color, b2_color;
 wire b1_en, b2_en;
-reg [9:0] pos0, pos1;
-reg reset = 0;
+reg  [9:0] pos0, pos1;
 wire [10:0] x_loc;
 reg  [10:0] x_loc_reg;
+reg  [31:0] counter;
 
 `ifdef RE640
 // Clock divider. Generate 25MHz pixel_clk from 100MHz clock.
@@ -61,7 +62,14 @@ end
 `endif
 
 
-LFSR lfsr(.clock(pixel_clk), .reset(reset), .rnd(x_loc));
+LFSR  lfsr
+         (.i_Clk(pixel_clk),
+          .i_Enable(1'b1),
+          .i_Seed_DV(1'b0),
+          .i_Seed_Data({10{1'b0}}), // Replication
+          .o_LFSR_Data(x_loc),
+          .o_LFSR_Done()
+          );
 
 
 `ifdef RE640
@@ -88,7 +96,7 @@ vga_controller_720_60 vga_controller(
 
 `endif
 
-balloon b1(
+balloon #(100) b1(
     .x(vga_hcnt),
     .y(vga_vcnt),
     .cx(x_loc_reg),
@@ -98,22 +106,47 @@ balloon b1(
 );
 
 // Cannot add balloons like this, needs to have a seperate control flow to decide which balloon each pixel belongs to
-balloon b2(
+balloon #(60) b2(
     .x(vga_hcnt),
     .y(vga_vcnt),
-    .cx(460),
+    .cx(600),
     .cy(pos1),
     .en(b2_en),
     .color(b2_color)
 );
 
+
+//always@(posedge pixel_clk) begin
+//    if (counter==`B1_START)
+        
+//end
+
+
 always@(posedge pixel_clk) begin
-    if (vga_hcnt == 0 && vga_vcnt==0) begin
+    if (reset) begin
+        pos0 <= 0;
+        pos1 <= 0;
+        x_loc_reg <= 300; 
+        counter <= 0;
+    end
+    else if (vga_hcnt == 0 && vga_vcnt==0) begin
         pos0 <= pos0 + 1;
         pos1 <= pos1 + 1;
+        counter <= counter + 1;
+        x_loc_reg <= x_loc_reg; 
     end
-    if (pos0==0)
-        x_loc_reg <= x_loc;
+    else if (pos0==0) begin
+        pos0 <= pos0;
+        pos1 <= pos1;
+        counter <= counter;
+        x_loc_reg <= x_loc; 
+    end
+    else begin
+        pos0 <= pos0;
+        pos1 <= pos1;
+        counter <= counter;
+        x_loc_reg <= x_loc_reg; 
+    end
 end
 
 // Generate figure to be displayed
@@ -149,9 +182,9 @@ always @(*) begin
 //        VGA_G = 4'hf;
 //        VGA_B = 4'hf;
 //    end
-    VGA_R = 4'hf; 
-    VGA_G = 4'hf; 
-    VGA_B = 4'hf; 
+    VGA_R = 4'h0; 
+    VGA_G = 4'h0; 
+    VGA_B = 4'h0; 
   end
 end
 endmodule
