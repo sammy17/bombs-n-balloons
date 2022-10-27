@@ -18,23 +18,31 @@ proc create_report { reportName command } {
   }
 }
 set_param chipscope.maxJobs 3
-set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/chath/vga_demo/vga_demo.cache/wt [current_project]
-set_property parent.project_path C:/Users/chath/vga_demo/vga_demo.xpr [current_project]
+set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
+set_property webtalk.parent_dir X:/EC551/vga_demo/vga_demo.cache/wt [current_project]
+set_property parent.project_path X:/EC551/vga_demo/vga_demo.xpr [current_project]
+set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/chath/vga_demo/vga_demo.cache/ip [current_project]
+set_property ip_output_repo x:/EC551/vga_demo/vga_demo.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+read_verilog X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/bl_colors.vh
 read_verilog -library xil_defaultlib {
-  C:/Users/chath/vga_demo/vga_demo.srcs/sources_1/new/balloon.v
-  C:/Users/chath/vga_demo/vga_demo.srcs/sources_1/new/vga_controller.v
-  C:/Users/chath/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v
+  X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/LFSR.v
+  X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/balloon.v
+  X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_controller_1080.v
+  X:/EC551/vga_demo/vga_demo.srcs/sources_1/new/vga_top.v
 }
+read_ip -quiet X:/EC551/vga_demo/vga_demo.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1.xci
+set_property used_in_implementation false [get_files -all x:/EC551/vga_demo/vga_demo.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_board.xdc]
+set_property used_in_implementation false [get_files -all x:/EC551/vga_demo/vga_demo.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1.xdc]
+set_property used_in_implementation false [get_files -all x:/EC551/vga_demo/vga_demo.srcs/sources_1/ip/clk_wiz_1/clk_wiz_1_ooc.xdc]
+
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
 # design are intentionally left as such for best results. Dcp files will be
@@ -43,8 +51,8 @@ read_verilog -library xil_defaultlib {
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/chath/vga_demo/vga_demo.srcs/constrs_1/new/const.xdc
-set_property used_in_implementation false [get_files C:/Users/chath/vga_demo/vga_demo.srcs/constrs_1/new/const.xdc]
+read_xdc X:/EC551/vga_demo/vga_demo.srcs/constrs_1/new/const.xdc
+set_property used_in_implementation false [get_files X:/EC551/vga_demo/vga_demo.srcs/constrs_1/new/const.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

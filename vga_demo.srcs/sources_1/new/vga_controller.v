@@ -34,9 +34,9 @@ module vga_controller_640_60 (pixel_clk,HS,VS,hcounter,vcounter,blank);
  parameter VMAX = 525; // maximum value for the vertical pixel counter
  parameter HLINES = 640; // total number of visible columns
  parameter HFP = 648; // value for the horizontal counter where front porch ends
- parameter HSP = 744; // value for the horizontal counter where the synch pulse ends
+ parameter HSP = 744; // value for the horizontal counter where the synch pulse ends 
  parameter VLINES = 480; // total number of visible lines
- parameter VFP = 482; // value for the vertical counter where the front porch ends
+ parameter VFP = 482; // value for the vertical counter where the front porch ends 
  parameter VSP = 484; // value for the vertical counter where the synch pulse ends
  parameter SPP = 0;
  
