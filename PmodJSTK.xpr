@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="40" Path="X:/Desktop/PmodJSTK/PmodJSTK.xpr">
+<Project Version="7" Minor="40" Path="C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="020aba46d8be412f95d75f367cf89f8e"/>

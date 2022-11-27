@@ -35,6 +35,10 @@
 // ============================================================================== 
 // 										  Define Module
 // ==============================================================================
+
+
+`define NOJSTK
+
 module PmodJSTK_Demo(
     CLK,
     RST,
@@ -51,6 +55,11 @@ module PmodJSTK_Demo(
 	 VGA_B,
 	 VGA_HS,
 	 VGA_VS
+`ifdef NOJSTK
+    ,button_up
+    ,button_down
+    ,shoot
+`endif
     );
 
 	// ===========================================================================
@@ -72,9 +81,12 @@ module PmodJSTK_Demo(
             output wire [3:0] VGA_B;
             output wire VGA_HS;
             output wire VGA_VS;
-             
+`ifdef NOJSTK
+            input button_up, button_down, shoot;
+`endif
             
              wire slow_clock;
+             wire clk_out;
              													
 			 clk_wiz_0 instance_name // For slowing down the clock
                             (
@@ -173,28 +185,85 @@ module PmodJSTK_Demo(
 			//always @(sndRec or RST or jstkData)
 			reg [10:0] bullet_pos_x;
 			reg [10:0] bullet_pos_y;
+			reg bullet_done;
+			reg [2:0] bullet_en;
+			
+`ifdef NOJSTK
+
+            always@ (posedge clk_out) begin
+                if(RST == 1'b1)
+		        begin
+		              bullet_pos_x <= 550;
+				      bullet_pos_y <= char_y + 40 ;//- 100;
+//				      bullet_done <= 0;
+				      bullet_en[0] <= 0;
+		        end
+		        else if (bullet_pos_x==0) begin
+//		              bullet_done <= 1;
+		              bullet_en[0] <= 0;
+		              bullet_pos_x <= 1;
+		              bullet_pos_y <= bullet_pos_y;
+		        end
+		        else if (bullet_en[0]) begin
+//		              bullet_done <= 0;
+		              bullet_en[0] <= 1;
+		              bullet_pos_x <= bullet_pos_x - 1;
+		              bullet_pos_y <= bullet_pos_y;
+		        end
+		        else if (shoot) begin
+//		              bullet_done <= 0;
+		              bullet_en[0] <= 1;
+		              bullet_pos_x <= 550;
+		              bullet_pos_y <= char_y + 10;
+		        end
+                else begin
+//		              bullet_done <= 0;
+		              bullet_en[0] <= bullet_en[0];
+		              bullet_pos_x <= bullet_pos_x;
+		              bullet_pos_y <= bullet_pos_y;
+		        end
+            end
+            
+
+`else
 			//Bullet modelling
 			always@ (posedge clk_out)
 			begin
 		        if(RST == 1'b1)
 		        begin
 		              bullet_pos_x <= 550;
-				      bullet_pos_y <= char_y - 100;
+				      bullet_pos_y <= char_y + 15 ;//- 100;
 		        end
 		        else
 		        begin 
 		              if(bullet_pos_x == 0)
 		              begin
-		                      bullet_pos_x =  550;
+		                      bullet_pos_x <=  550;
 		              end
 		              else if(LED)
 		              begin   
-		                      bullet_pos_y = char_y;
-		                      bullet_pos_x = bullet_pos_x - 1;
+		                      bullet_pos_y <= char_y+10;
+		                      bullet_pos_x <= bullet_pos_x - 1;
 		              end
 		        end
 			end
 			
+`endif
+			
+`ifdef NOJSTK
+
+            always@(posedge clk_out) begin
+                if (RST)
+                    char_y <= upper_limit+200;
+                else if (button_up && char_y > upper_limit)
+                    char_y <= char_y - 1;
+                else if (button_down && char_y < lower_limit)
+                    char_y <= char_y + 1;
+                else 
+                    char_y <= char_y;
+            end
+
+`else
 			//Character Movement 
 			always@ (posedge clk_out)
 			begin
@@ -203,7 +272,7 @@ module PmodJSTK_Demo(
 			        //LED <= 3'b000;
 			        LED <= 8'b00000000;
 					y_data <= {2'b00,LED};
-					char_y <= upper_limit;
+					char_y <= upper_limit+200;
 					
 				end
 				else begin
@@ -226,12 +295,14 @@ module PmodJSTK_Demo(
 	                end
 			     end
 			end
-			
+      
+`endif
 
 			vga_top vga(.CLK100MHZ (CLK),
 			            .char_pos_y (char_y),
 			            .bullet_pos_y(bullet_pos_y),
 			            .bullet_pos_x(bullet_pos_x),
+			            .bullet_en(bullet_en[0]),
 			            //.character_pos_y (y_data),
 			            //.character_pos_y ({jstkData[25:24], jstkData[39:32]}),
 			            .rst(RST),

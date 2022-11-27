@@ -70,13 +70,13 @@ set rc [catch {
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir X:/Desktop/PmodJSTK/PmodJSTK.cache/wt [current_project]
-  set_property parent.project_path X:/Desktop/PmodJSTK/PmodJSTK.xpr [current_project]
+  set_property webtalk.parent_dir C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.cache/wt [current_project]
+  set_property parent.project_path C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.xpr [current_project]
   set_property ip_cache_permissions disable [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
-  add_files -quiet X:/Desktop/PmodJSTK/PmodJSTK.runs/synth_1/PmodJSTK_Demo.dcp
-  read_ip -quiet X:/Desktop/PmodJSTK/PmodJSTK.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-  read_xdc X:/Desktop/PmodJSTK/PmodJSTK.srcs/constrs_1/new/Nexys-A7-100T-Master.xdc
+  add_files -quiet C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/PmodJSTK_Demo.dcp
+  read_ip -quiet C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_xdc C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/constrs_1/new/Nexys-A7-100T-Master.xdc
   link_design -top PmodJSTK_Demo -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
 } RESULT]

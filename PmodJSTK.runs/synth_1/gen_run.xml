@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1669508665">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1669585128">
   <File Type="PA-TCL" Name="PmodJSTK_Demo.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="PmodJSTK_Demo_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="PmodJSTK_Demo_reports.tcl"/>

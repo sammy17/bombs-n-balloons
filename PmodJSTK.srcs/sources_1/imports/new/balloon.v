@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module balloon( rst, clk, frame_end, min, x, y);
+module balloon( rst, clk, frame_end, min, x, y, bullet_x, bullet_y, en);
 parameter START = 4;
 parameter MAXV = 480;
 parameter MAXH = 640;
@@ -29,15 +29,21 @@ parameter MAXH = 640;
 
 input clk, frame_end, rst;
 input [10:0] min;
+input [10:0] bullet_x, bullet_y;
 output reg [10:0] x;
 output reg [10:0] y;
+output reg en;
 //output reg [11:0] color;
+
+localparam BWIDTH = 18;
+localparam BHEIGHT = 24;
 
 //`include "bl_colors.vh"
 reg  [31:0] frame_count;
 wire [10:0] x_loc;
 wire mov_en, change_x;
 wire [10:0] x_loc_range;
+reg en_r;
 
 LFSR  lfsr
          (.i_Clk(clk),
@@ -97,6 +103,27 @@ always@(posedge clk) begin
         x <= x;
         y <= y;
     end 
+end
+
+
+// collision detect
+always@(posedge clk)  begin
+    if (rst) begin
+        en <= 1;
+        en_r <= 1;
+    end
+    else if  ((bullet_x > x) & (bullet_x < x+BWIDTH) & (bullet_y > y) & (bullet_y < y+BHEIGHT) & (en)) begin
+        en <= 0;
+//        en_r <= 0;
+    end
+    else if (~en & y==-11'd20) begin
+        en <= 1;
+//        en_r <= 1;
+    end
+    else begin
+        en <= en;
+//        en_r <= en_r;
+    end
 end
 
 //reg [2:0] count = 0;

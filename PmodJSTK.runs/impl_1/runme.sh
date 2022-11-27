@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='X:/Desktop/PmodJSTK/PmodJSTK.runs/impl_1'
+HD_PWD='C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
