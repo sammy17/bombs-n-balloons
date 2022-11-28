@@ -36,6 +36,13 @@
 // 										  Define Module
 // ==============================================================================
 
+`define CLOG2(x) \
+   (x <= 2) ? 1 : \
+   (x <= 4) ? 2 : \
+   (x <= 8) ? 3 : \
+   (x <= 16) ? 4 : \
+   (x <= 32) ? 5 : \
+   (x <= 64) ? 6 
 
 `define NOJSTK
 
@@ -84,9 +91,10 @@ module PmodJSTK_Demo(
 `ifdef NOJSTK
             input button_up, button_down, shoot;
 `endif
+            parameter NUM_BULLETS = 10;
             
              wire slow_clock;
-             wire clk_out;
+             wire clk_out, clk_out_4;
              													
 			 clk_wiz_0 instance_name // For slowing down the clock
                             (
@@ -116,6 +124,8 @@ module PmodJSTK_Demo(
 
 			// Signal carrying output data that user selected
 			wire [9:0] posData;
+
+            reg [NUM_BULLETS-1:0] b_idx; // ideally this should only be log2(num_bullets) size reg
 
 	// ===========================================================================
 	// 										Implementation
@@ -162,11 +172,12 @@ module PmodJSTK_Demo(
 			);
 			
 			
-			clock_div slowerClock( .clk_in(CLK), .clk_out(clk_out)); // 100MHz -> 4Hz
+			clock_div slowerClock( .clk_in(CLK), .clk_out(clk_out)); // 100MHz -> 40*4Hz
+			clock_div_4 slowerClock4( .clk_in(CLK), .clk_out(clk_out_4)); // 100MHz -> 4Hz
 			
 
 			// Use state of switch 0 to select output of X position or Y position data to SSD
-			assign posData = (SW[0] == 1'b1) ? {jstkData[9:8], jstkData[23:16]} : {jstkData[25:24], jstkData[39:32]};
+			assign posData = (SW[1]==1) ? b_idx : (SW[0] == 1'b1) ? {jstkData[9:8], jstkData[23:16]} : {jstkData[25:24], jstkData[39:32]};
 
 			// Data to be sent to PmodJSTK, lower two bits will turn on leds on PmodJSTK
 			assign sndData = {8'b100000, {SW[1], SW[2]}};
@@ -183,46 +194,64 @@ module PmodJSTK_Demo(
 		    reg [10:0] char_y;
 	        reg [10:0] y_data;
 			//always @(sndRec or RST or jstkData)
-			reg [10:0] bullet_pos_x;
-			reg [10:0] bullet_pos_y;
+			reg [11*NUM_BULLETS-1:0] bullet_pos_x;
+			reg [11*NUM_BULLETS-1:0] bullet_pos_y;
 			reg bullet_done;
-			reg [2:0] bullet_en;
+			reg [NUM_BULLETS-1:0] bullet_en;
+			wire shoot_r;
+			
+			genvar i;
 			
 `ifdef NOJSTK
 
-            always@ (posedge clk_out) begin
+            debouncer debouncer(.clk(clk_out), .in(shoot), .out(shoot_r));
+
+            always@(posedge clk_out) begin
                 if(RST == 1'b1)
-		        begin
-		              bullet_pos_x <= 550;
-				      bullet_pos_y <= char_y + 40 ;//- 100;
-//				      bullet_done <= 0;
-				      bullet_en[0] <= 0;
-		        end
-		        else if (bullet_pos_x==0) begin
-//		              bullet_done <= 1;
-		              bullet_en[0] <= 0;
-		              bullet_pos_x <= 1;
-		              bullet_pos_y <= bullet_pos_y;
-		        end
-		        else if (bullet_en[0]) begin
-//		              bullet_done <= 0;
-		              bullet_en[0] <= 1;
-		              bullet_pos_x <= bullet_pos_x - 1;
-		              bullet_pos_y <= bullet_pos_y;
-		        end
-		        else if (shoot) begin
-//		              bullet_done <= 0;
-		              bullet_en[0] <= 1;
-		              bullet_pos_x <= 550;
-		              bullet_pos_y <= char_y + 10;
-		        end
-                else begin
-//		              bullet_done <= 0;
-		              bullet_en[0] <= bullet_en[0];
-		              bullet_pos_x <= bullet_pos_x;
-		              bullet_pos_y <= bullet_pos_y;
-		        end
+                    b_idx <= 0;
+                else if (b_idx==NUM_BULLETS)
+                    b_idx <= 0;
+                else if (shoot)
+                    b_idx <= b_idx + 1;
             end
+
+            generate
+                for ( i=0; i<NUM_BULLETS; i=i+1 ) begin
+                    always@ (posedge clk_out) begin
+                        if(RST == 1'b1)
+                        begin
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= 550;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 50 ;//- 100;
+        //				      bullet_done <= 0;
+                              bullet_en[i] <= 0;
+                        end
+                        else if (bullet_pos_x[((i+1)*11)-1:i*11]==0) begin
+        //		              bullet_done <= 1;
+                              bullet_en[i] <= 0;
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= 1;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
+                        else if (bullet_en[i]) begin
+        //		              bullet_done <= 0;
+                              bullet_en[i] <= 1;
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11] - 1;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
+                        else if (shoot) begin
+        //		              bullet_done <= 0;
+                              bullet_en[i] <= (b_idx==i);
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= 550;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 10;
+                        end
+                        else begin
+        //		              bullet_done <= 0;
+                              bullet_en[i] <= bullet_en[i];
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11];
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
+                    end
+                end
+            endgenerate
             
 
 `else
@@ -298,11 +327,11 @@ module PmodJSTK_Demo(
       
 `endif
 
-			vga_top vga(.CLK100MHZ (CLK),
+			vga_top #(.NUM_BULLETS(NUM_BULLETS)) vga(.CLK100MHZ (CLK),
 			            .char_pos_y (char_y),
 			            .bullet_pos_y(bullet_pos_y),
 			            .bullet_pos_x(bullet_pos_x),
-			            .bullet_en(bullet_en[0]),
+			            .bullet_en(bullet_en),
 			            //.character_pos_y (y_data),
 			            //.character_pos_y ({jstkData[25:24], jstkData[39:32]}),
 			            .rst(RST),

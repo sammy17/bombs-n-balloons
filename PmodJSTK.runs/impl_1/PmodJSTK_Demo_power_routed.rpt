@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Sun Nov 27 16:41:14 2022
+| Date             : Sun Nov 27 20:04:34 2022
 | Host             : ECE-PHO115-26 running 64-bit major release  (build 9200)
 | Command          : report_power -file PmodJSTK_Demo_power_routed.rpt -pb PmodJSTK_Demo_power_summary_routed.pb -rpx PmodJSTK_Demo_power_routed.rpx
 | Design           : PmodJSTK_Demo
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.153        |
+| Total On-Chip Power (W)  | 0.155        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.056        |
+| Dynamic (W)              | 0.057        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.3         |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.013 |     2615 |       --- |             --- |
-|   LUT as Logic |     0.012 |     1477 |     63400 |            2.33 |
-|   CARRY4       |    <0.001 |      158 |     15850 |            1.00 |
+| Slice Logic    |     0.013 |     4536 |       --- |             --- |
+|   LUT as Logic |     0.012 |     2360 |     63400 |            3.72 |
+|   CARRY4       |    <0.001 |      368 |     15850 |            2.32 |
 |   F7/F8 Muxes  |    <0.001 |       96 |     63400 |            0.15 |
-|   Register     |    <0.001 |      502 |    126800 |            0.40 |
+|   Register     |    <0.001 |      736 |    126800 |            0.58 |
 |   BUFG         |    <0.001 |        4 |        32 |           12.50 |
 |   Others       |     0.000 |       33 |       --- |             --- |
-| Signals        |     0.011 |     1887 |       --- |             --- |
+| Signals        |     0.012 |     2522 |       --- |             --- |
 | Block RAM      |    <0.001 |      0.5 |       135 |            0.37 |
 | DSPs           |     0.003 |        8 |       240 |            3.33 |
-| I/O            |     0.026 |       44 |       210 |           20.95 |
+| I/O            |     0.028 |       44 |       210 |           20.95 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.153 |          |           |                 |
+| Total          |     0.155 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,9 +75,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.044 |       0.029 |      0.015 |
+| Vccint    |       1.000 |     0.045 |       0.030 |      0.015 |
 | Vccaux    |       1.800 |     0.019 |       0.001 |      0.018 |
-| Vcco33    |       3.300 |     0.011 |       0.007 |      0.004 |
+| Vcco33    |       3.300 |     0.012 |       0.008 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -144,14 +144,14 @@ Table of Contents
 +--------------------+-----------+
 | Name               | Power (W) |
 +--------------------+-----------+
-| PmodJSTK_Demo      |     0.056 |
+| PmodJSTK_Demo      |     0.057 |
 |   DispCtrl         |     0.002 |
 |     BtoBCD         |     0.001 |
 |   vga              |     0.025 |
 |     b1             |     0.001 |
-|     b2             |     0.001 |
-|     b3             |     0.002 |
-|     bram           |     0.011 |
+|     b2             |     0.002 |
+|     b3             |     0.001 |
+|     bram           |     0.010 |
 |     vga_controller |     0.001 |
 +--------------------+-----------+
 

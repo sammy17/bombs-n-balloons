@@ -78,9 +78,9 @@ endmodule
 // top module that instantiates the VGA controller and generates images
 module vga_top(
      input [VGA_VAL_SIZE-1:0] char_pos_y,
-     input [VGA_VAL_SIZE-1:0] bullet_pos_x,
-     input [VGA_VAL_SIZE-1:0] bullet_pos_y,
-     input bullet_en,
+     input [NUM_BULLETS*VGA_VAL_SIZE-1:0] bullet_pos_x,
+     input [NUM_BULLETS*VGA_VAL_SIZE-1:0] bullet_pos_y,
+     input [NUM_BULLETS-1:0] bullet_en,
      input wire CLK100MHZ,
      input rst,
      output reg [3:0] VGA_R,
@@ -133,6 +133,8 @@ module vga_top(
     parameter balloon2_start_addr = balloon_start_addr + balloon_w*balloon_h - 1;
     reg [11:0] balloon_addr_reg;
     
+    parameter NUM_BULLETS = 10;
+    
     wire [VGA_VAL_SIZE-1:0] balloon_x [2:0];
     wire [VGA_VAL_SIZE-1:0] balloon_y [2:0]; 
     reg  [VGA_VAL_SIZE-1:0] min [2:0]; 
@@ -141,9 +143,9 @@ module vga_top(
     wire frame_end;
     assign frame_end = (vga_hcnt == 0 && vga_vcnt == 0) ;
     
-    balloon #(10,480,640) b1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[0]), .x(balloon_x[0]), .y(balloon_y[0]), .bullet_x(bullet_x[0]), .bullet_y(bullet_y[0]), .en(b_en[0]));
-    balloon #(150,480,640) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[1]), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_x[0]), .bullet_y(bullet_y[0]), .en(b_en[1]));
-    balloon #(400,480,640) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[2]), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_x[0]), .bullet_y(bullet_y[0]), .en(b_en[2]));
+    balloon #(.START(4),.NUM_BULLETS(NUM_BULLETS)) b1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[0]), .x(balloon_x[0]), .y(balloon_y[0]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[0]));
+    balloon #(.START(150),.NUM_BULLETS(NUM_BULLETS)) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[1]), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[1]));
+    balloon #(.START(400),.NUM_BULLETS(NUM_BULLETS)) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[2]), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[2]));
     
     always@(*) begin
         min[0] <= 40;
@@ -172,19 +174,20 @@ module vga_top(
     // bullet
     reg [VGA_VAL_SIZE-1:0] bullet_x [2:0];
     reg [VGA_VAL_SIZE-1:0] bullet_y [2:0];
-    reg bullet_en_r [2:0];
-    always@(*) begin
-        bullet_x[0] <= bullet_pos_x;
-        bullet_x[1] <= 10;
-        bullet_x[2] <= 10;
-        bullet_y[0] <= bullet_pos_y;
-        bullet_y[1] <= 400;
-        bullet_y[2] <= 410;
-        bullet_en_r[0] <= bullet_en;
-    end
+//    reg bullet_en_r [NUM_BULLETS-1:0];
+//    always@(*) begin
+//        bullet_x[0] <= bullet_pos_x;
+//        bullet_x[1] <= 10;
+//        bullet_x[2] <= 10;
+//        bullet_y[0] <= bullet_pos_y;
+//        bullet_y[1] <= 400;
+//        bullet_y[2] <= 410;
+//        bullet_en_r[0] <= bullet_en;
+//    end
     parameter bullet_w = 8;
     parameter bullet_h = 3;
     parameter bullet_start_addr = balloon2_start_addr +  balloon_w*balloon_h - 1;
+
     
 
     // bram
@@ -234,6 +237,7 @@ module vga_top(
      .blank(vga_blank)
     );
 `endif
+    integer j;
     // Generate figure to be displayed
     // Decide the color for the current pixel at index (hcnt, vcnt).
     // This example displays an white square at the center of the screen with a colored checkerboard background.
@@ -262,6 +266,7 @@ module vga_top(
                 VGA_B <= 4'h0;
             end
                  
+
             for (i=0; i<3; i=i+1) begin
                 if ( b_en[i] && ((vga_hcnt >= balloon_x[i] && vga_hcnt < (balloon_x[i] + balloon_w)) &&
                     (vga_vcnt >= balloon_y[i] && vga_vcnt < (balloon_y[i] + balloon_h)))) begin                
@@ -272,15 +277,18 @@ module vga_top(
                 end
             end
             
-            for (i=0; i<3; i=i+1) begin  // 3 bullets for now
-                if ( bullet_en_r[i] && (vga_hcnt >= bullet_x[i] && vga_hcnt < (bullet_x[i] + bullet_w)) &&
-                    (vga_vcnt >= bullet_y[i] && vga_vcnt < (bullet_y[i] + bullet_h))) begin                
-                          bram_addr <= bullet_start_addr + (((vga_vcnt - bullet_y[i] - 1)*bullet_w) + (vga_hcnt - bullet_x[i])); 
+            
+//            generate
+            for (j=0; j<NUM_BULLETS; j=j+1) begin  // 3 bullets for now
+                if ( bullet_en[j] && vga_hcnt >= ((bullet_pos_x>>(11*i))& 11'h7ff) && vga_hcnt < (((bullet_pos_x>>(11*i)) & 11'h7ff) + bullet_w) &&
+                    vga_vcnt >= ((bullet_pos_y>>(11*i)) & 11'h7ff) && vga_vcnt < ((bullet_pos_y>>(11*i)) & 11'h7ff) + bullet_h ) begin                
+                          bram_addr <= bullet_start_addr + (((vga_vcnt - ((bullet_pos_y>>(11*i)) & 11'h7ff) - 1)*bullet_w) + (vga_hcnt - ((bullet_pos_x>>(11*i)) & 11'h7ff))); 
                           VGA_R <= pixel_data[11:8];
                           VGA_G <= pixel_data[7:4];
                           VGA_B <= pixel_data[3:0];
                 end
             end
+//            endgenerate
         end
                    // timer digit 0
            if ((vga_hcnt >= d0_pos_x && vga_hcnt <= (d0_pos_x + dig_W) ) &&

@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Sun Nov 27 16:41:12 2022
+| Date         : Sun Nov 27 20:04:31 2022
 | Host         : ECE-PHO115-26 running 64-bit major release  (build 9200)
 | Command      : report_drc -file PmodJSTK_Demo_drc_routed.rpt -pb PmodJSTK_Demo_drc_routed.pb -rpx PmodJSTK_Demo_drc_routed.rpx
 | Design       : PmodJSTK_Demo
@@ -98,12 +98,12 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net vga/vga_controller/E[0] is a gated clock net sourced by a combinational pin vga/vga_controller/col_id_reg[2]_i_2/O, cell vga/vga_controller/col_id_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net vga/vga_controller/E[0] is a gated clock net sourced by a combinational pin vga/vga_controller/dec_digit_reg[3]_i_1/O, cell vga/vga_controller/dec_digit_reg[3]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PDRC-153#2 Warning
 Gated clock check  
-Net vga/vga_controller/dec_digit0 is a gated clock net sourced by a combinational pin vga/vga_controller/dec_digit_reg[3]_i_1/O, cell vga/vga_controller/dec_digit_reg[3]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net vga/vga_controller/dec_digit_reg[3]_i_1_0 is a gated clock net sourced by a combinational pin vga/vga_controller/col_id_reg[2]_i_2/O, cell vga/vga_controller/col_id_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 
