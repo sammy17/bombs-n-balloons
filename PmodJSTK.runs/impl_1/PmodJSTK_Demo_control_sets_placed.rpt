@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Sun Nov 27 20:03:55 2022
+| Date         : Wed Nov 30 17:59:47 2022
 | Host         : ECE-PHO115-26 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file PmodJSTK_Demo_control_sets_placed.rpt
 | Design       : PmodJSTK_Demo
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    58 |
-|    Minimum number of control sets                        |    58 |
+| Total control sets                                       |    60 |
+|    Minimum number of control sets                        |    60 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   248 |
+| Unused register locations in slices containing registers |   262 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    58 |
+| Total control sets |    60 |
 | >= 0 to < 4        |     5 |
-| >= 4 to < 6        |     5 |
+| >= 4 to < 6        |     6 |
 | >= 6 to < 8        |     1 |
-| >= 8 to < 10       |     3 |
+| >= 8 to < 10       |     2 |
 | >= 10 to < 12      |    31 |
-| >= 12 to < 14      |     1 |
+| >= 12 to < 14      |     2 |
 | >= 14 to < 16      |     2 |
-| >= 16              |    10 |
+| >= 16              |    11 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,79 +58,81 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             110 |           46 |
-| No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |             160 |           50 |
-| Yes          | No                    | No                     |             159 |           58 |
-| Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             307 |           99 |
+| No           | No                    | No                     |             154 |           71 |
+| No           | No                    | Yes                    |               1 |            1 |
+| No           | Yes                   | No                     |             189 |           59 |
+| Yes          | No                    | No                     |             159 |           69 |
+| Yes          | No                    | Yes                    |               6 |            2 |
+| Yes          | Yes                   | No                     |             301 |          105 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------------------------------------+-----------------------------------------------------+-------------------------------------+------------------+----------------+
-|                Clock Signal                |                    Enable Signal                    |           Set/Reset Signal          | Slice Load Count | Bel Load Count |
-+--------------------------------------------+-----------------------------------------------------+-------------------------------------+------------------+----------------+
-| ~iSCLK                                     | PmodJSTK_Int/SPI_Ctrl/SS_i_1_n_1                    | RST_IBUF                            |                1 |              1 |
-|  pixel_clk                                 |                                                     | vga/vga_controller/VS0              |                1 |              1 |
-|  pixel_clk                                 |                                                     | vga/vga_controller/HS0              |                1 |              1 |
-|  vga/vga_controller/E[0]                   |                                                     | vga/vga_controller/dec_digit043_out |                1 |              2 |
-|  DispCtrl/DCLK_reg_n_1                     |                                                     |                                     |                1 |              2 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/tmpSR[27]_i_1_n_1                   | RST_IBUF                            |                2 |              4 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/tmpSR[15]_i_1_n_1                   | RST_IBUF                            |                2 |              4 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/tmpSR[23]_i_1_n_1                   | RST_IBUF                            |                2 |              4 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/tmpSR[19]_i_1_n_1                   | RST_IBUF                            |                2 |              4 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/shiftCount[4]_i_1_n_1               |                                     |                1 |              5 |
-|  vga/vga_controller/dec_digit_reg[3]_i_1_0 |                                                     |                                     |                2 |              7 |
-|  CLK_IBUF_BUFG                             |                                                     |                                     |                4 |              8 |
-|  iSCLK                                     | PmodJSTK_Int/SPI_Int/rSR                            | RST_IBUF                            |                1 |              8 |
-| ~iSCLK                                     | PmodJSTK_Int/SPI_Int/wSR_0                          | RST_IBUF                            |                3 |              8 |
-|  clk_BUFG                                  | genblk1[9].bullet_pos_x[108]_i_1_n_1                | RST_IBUF                            |                3 |             10 |
-|  clk_BUFG                                  | genblk1[7].bullet_pos_x[86]_i_1_n_1                 | RST_IBUF                            |                4 |             10 |
-|  clk_BUFG                                  |                                                     |                                     |                4 |             10 |
-|  clk_BUFG                                  | b_idx                                               | RST_IBUF                            |                3 |             10 |
-|  clk_BUFG                                  | genblk1[8].bullet_pos_x[97]_i_1_n_1                 | RST_IBUF                            |                5 |             10 |
-|  clk_BUFG                                  | genblk1[6].bullet_pos_x[75]_i_1_n_1                 | RST_IBUF                            |                4 |             10 |
-|  clk_BUFG                                  | genblk1[0].bullet_pos_x[9]_i_1_n_1                  | RST_IBUF                            |                3 |             10 |
-|  clk_BUFG                                  | genblk1[4].bullet_pos_x[53]_i_1_n_1                 | RST_IBUF                            |                4 |             10 |
-|  clk_BUFG                                  | genblk1[1].bullet_pos_x[20]_i_1_n_1                 | RST_IBUF                            |                5 |             10 |
-|  clk_BUFG                                  | genblk1[5].bullet_pos_x[64]_i_1_n_1                 | RST_IBUF                            |                3 |             10 |
-|  clk_BUFG                                  | genblk1[3].bullet_pos_x[42]_i_1_n_1                 | RST_IBUF                            |                4 |             10 |
-|  clk_BUFG                                  | genblk1[2].bullet_pos_x[31]_i_1_n_1                 | RST_IBUF                            |                5 |             10 |
-|  clk_BUFG                                  | genblk1[4].bullet_pos_y[54]_i_1_n_1                 |                                     |                3 |             11 |
-|  clk_BUFG                                  | genblk1[5].bullet_pos_y[65]_i_1_n_1                 |                                     |                4 |             11 |
-|  clk_BUFG                                  | genblk1[6].bullet_pos_y[76]_i_1_n_1                 |                                     |                4 |             11 |
-|  clk_BUFG                                  | genblk1[3].bullet_pos_y[43]_i_1_n_1                 |                                     |                3 |             11 |
-|  clk_BUFG                                  | genblk1[7].bullet_pos_y[87]_i_1_n_1                 |                                     |                4 |             11 |
-|  clk_BUFG                                  | genblk1[8].bullet_pos_y[98]_i_1_n_1                 |                                     |                4 |             11 |
-|  clk_BUFG                                  | genblk1[9].bullet_pos_y[109]_i_1_n_1                |                                     |                4 |             11 |
-|  pixel_clk                                 | vga/b2/x[10]_i_1__1_n_1                             |                                     |                5 |             11 |
-|  pixel_clk                                 | vga/vga_controller/vcounter[10]_i_1_n_1             |                                     |                5 |             11 |
-|  pixel_clk                                 | vga/b3/x[10]_i_1__0_n_1                             |                                     |                5 |             11 |
-|  pixel_clk                                 | vga/b1/x[10]_i_1_n_1                                |                                     |                5 |             11 |
-|  pixel_clk                                 | vga/b1/E[0]                                         | RST_IBUF                            |                4 |             11 |
-|  pixel_clk                                 | vga/b1/y[10]_i_1__1_n_1                             | RST_IBUF                            |                3 |             11 |
-|  pixel_clk                                 | vga/b1/frame_count_reg[8]_0[0]                      | RST_IBUF                            |                3 |             11 |
-|  DispCtrl/DCLK_reg_n_1                     |                                                     | RST_IBUF                            |                2 |             11 |
-|  clk_BUFG                                  | char_y[10]_i_1_n_1                                  | RST_IBUF                            |                4 |             11 |
-|  clk_BUFG                                  | genblk1[0].bullet_pos_y[10]_i_1_n_1                 |                                     |                3 |             11 |
-|  clk_BUFG                                  | genblk1[1].bullet_pos_y[21]_i_1_n_1                 |                                     |                3 |             11 |
-|  clk_BUFG                                  | genblk1[2].bullet_pos_y[32]_i_1_n_1                 |                                     |                5 |             11 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/tmpSR[11]_i_1_n_1                   | RST_IBUF                            |                4 |             12 |
-|  CLK_IBUF_BUFG                             |                                                     | DispCtrl/clkCount[15]_i_1_n_1       |                4 |             15 |
-|  CLK_IBUF_BUFG                             |                                                     | vga/balloon_anim                    |                4 |             15 |
-|  CLK_IBUF_BUFG                             | DispCtrl/BtoBCD/BCDOUT[15]_i_1_n_1                  | RST_IBUF                            |                5 |             16 |
-| ~iSCLK                                     | PmodJSTK_Int/SPI_Ctrl/FSM_onehot_pState_reg_n_1_[4] | RST_IBUF                            |                5 |             20 |
-| ~iSCLK                                     |                                                     | RST_IBUF                            |                5 |             21 |
-|  CLK_IBUF_BUFG                             |                                                     | slowerClock/clk_out                 |                7 |             25 |
-|  pixel_clk                                 |                                                     | RST_IBUF                            |               13 |             30 |
-|  pixel_clk                                 | vga/vga_controller/hcounter_reg[8]_0                | RST_IBUF                            |                8 |             32 |
-|  n_0_853_BUFG                              |                                                     |                                     |               18 |             38 |
-|  CLK_IBUF_BUFG                             |                                                     | RST_IBUF                            |               12 |             39 |
-| ~iSCLK                                     | PmodJSTK_Int/SPI_Ctrl/tmpSR[39]_i_1_n_1             | RST_IBUF                            |                7 |             40 |
-|  pixel_clk                                 |                                                     |                                     |               17 |             45 |
-+--------------------------------------------+-----------------------------------------------------+-------------------------------------+------------------+----------------+
++--------------------------+-----------------------------------------------------+-------------------------------+------------------+----------------+
+|       Clock Signal       |                    Enable Signal                    |        Set/Reset Signal       | Slice Load Count | Bel Load Count |
++--------------------------+-----------------------------------------------------+-------------------------------+------------------+----------------+
+|  pixel_clk               |                                                     | vga/vga_controller/VS0        |                1 |              1 |
+|  vga/tcg/CLK             |                                                     | RST_IBUF                      |                1 |              1 |
+| ~iSCLK                   | PmodJSTK_Int/SPI_Ctrl/SS_i_1_n_1                    | RST_IBUF                      |                1 |              1 |
+|  pixel_clk               |                                                     | vga/vga_controller/HS0        |                1 |              1 |
+|  DispCtrl/DCLK_reg_n_1   |                                                     |                               |                1 |              2 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/tmpSR[19]_i_1_n_1                   | RST_IBUF                      |                2 |              4 |
+|  clk_BUFG                | debouncer/E[0]                                      | RST_IBUF                      |                1 |              4 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/tmpSR[27]_i_1_n_1                   | RST_IBUF                      |                1 |              4 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/tmpSR[23]_i_1_n_1                   | RST_IBUF                      |                2 |              4 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/tmpSR[15]_i_1_n_1                   | RST_IBUF                      |                1 |              4 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/shiftCount[4]_i_1_n_1               |                               |                1 |              5 |
+|  vga/tcg/CLK             | vga/sel                                             | RST_IBUF                      |                2 |              6 |
+|  iSCLK                   | PmodJSTK_Int/SPI_Int/rSR                            | RST_IBUF                      |                1 |              8 |
+| ~iSCLK                   | PmodJSTK_Int/SPI_Int/wSR_0                          | RST_IBUF                      |                2 |              8 |
+|  clk_BUFG                | debouncer/genblk1[8].bullet_en_reg[8][0]            | RST_IBUF                      |                4 |             10 |
+|  clk_BUFG                | debouncer/genblk1[6].bullet_en_reg[6][0]            | RST_IBUF                      |                4 |             10 |
+|  clk_BUFG                | debouncer/genblk1[4].bullet_en_reg[4][0]            | RST_IBUF                      |                3 |             10 |
+|  clk_BUFG                | debouncer/genblk1[3].bullet_en_reg[3][0]            | RST_IBUF                      |                5 |             10 |
+|  clk_BUFG                | debouncer/genblk1[2].bullet_en_reg[2][0]            | RST_IBUF                      |                4 |             10 |
+|  clk_BUFG                | debouncer/genblk1[1].bullet_en_reg[1][0]            | RST_IBUF                      |                4 |             10 |
+|  CLK_IBUF_BUFG           |                                                     |                               |                6 |             10 |
+|  clk_BUFG                | debouncer/genblk1[9].bullet_en_reg[9][0]            | RST_IBUF                      |                4 |             10 |
+|  clk_BUFG                | debouncer/genblk1[7].bullet_en_reg[7][0]            | RST_IBUF                      |                5 |             10 |
+|  clk_BUFG                | debouncer/genblk1[5].bullet_en_reg[5][0]            | RST_IBUF                      |                4 |             10 |
+|  clk_BUFG                | debouncer/out_reg_9[0]                              | RST_IBUF                      |                5 |             10 |
+|  pixel_clk               | vga/b1/frame_count_reg[8]_0[0]                      | RST_IBUF                      |                6 |             11 |
+|  pixel_clk               | vga/b1/x[10]_i_1_n_1                                |                               |                6 |             11 |
+|  pixel_clk               | vga/b3/x[10]_i_1__1_n_1                             |                               |                5 |             11 |
+|  pixel_clk               | vga/b2/x[10]_i_1__0_n_1                             |                               |                6 |             11 |
+|  pixel_clk               | vga/vga_controller/vcounter[10]_i_1_n_1             |                               |                4 |             11 |
+|  clk_BUFG                | debouncer/out_reg_13[0]                             |                               |                6 |             11 |
+|  clk_BUFG                | debouncer/out_reg_17[0]                             |                               |                5 |             11 |
+|  clk_BUFG                | debouncer/out_reg_11[0]                             |                               |                4 |             11 |
+|  clk_BUFG                | debouncer/out_reg_12[0]                             |                               |                5 |             11 |
+|  clk_BUFG                | debouncer/out_reg_19[0]                             |                               |                6 |             11 |
+|  clk_BUFG                | debouncer/out_reg_16[0]                             |                               |                6 |             11 |
+|  DispCtrl/DCLK_reg_n_1   |                                                     | RST_IBUF                      |                2 |             11 |
+|  clk_BUFG                | debouncer/out_reg_15[0]                             |                               |                3 |             11 |
+|  clk_BUFG                | debouncer/out_reg_10[0]                             |                               |                3 |             11 |
+|  vga/vga_controller/E[0] |                                                     |                               |                6 |             11 |
+|  pixel_clk               | vga/b1/E[0]                                         | RST_IBUF                      |                5 |             11 |
+|  pixel_clk               | vga/b1/y[10]_i_1_n_1                                | RST_IBUF                      |                7 |             11 |
+|  clk_BUFG                | debouncer/out_reg_14[0]                             |                               |                4 |             11 |
+|  clk_BUFG                | debouncer/out_reg_18[0]                             |                               |                5 |             11 |
+|  clk_BUFG                | char_y[10]_i_1_n_1                                  | RST_IBUF                      |                4 |             11 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/tmpSR[11]_i_1_n_1                   | RST_IBUF                      |                6 |             12 |
+|  clk_BUFG                |                                                     |                               |                8 |             13 |
+|  CLK_IBUF_BUFG           |                                                     | vga/balloon_anim              |                4 |             15 |
+|  CLK_IBUF_BUFG           |                                                     | DispCtrl/clkCount[15]_i_1_n_1 |                4 |             15 |
+|  CLK_IBUF_BUFG           | DispCtrl/BtoBCD/BCDOUT[15]_i_1_n_1                  | RST_IBUF                      |                3 |             16 |
+| ~iSCLK                   | PmodJSTK_Int/SPI_Ctrl/FSM_onehot_pState_reg_n_1_[4] | RST_IBUF                      |                7 |             20 |
+| ~iSCLK                   |                                                     | RST_IBUF                      |                6 |             21 |
+|  CLK_IBUF_BUFG           |                                                     | slowerClock/clk_out           |                7 |             25 |
+|  pixel_clk               |                                                     | RST_IBUF                      |               14 |             30 |
+|  CLK_IBUF_BUFG           |                                                     | vga/tcg/counter[31]_i_1_n_1   |                8 |             31 |
+|  pixel_clk               | vga/vga_controller/vcounter_reg[1]_1                | RST_IBUF                      |                8 |             32 |
+|  CLK_IBUF_BUFG           |                                                     | RST_IBUF                      |               12 |             39 |
+| ~iSCLK                   | PmodJSTK_Int/SPI_Ctrl/tmpSR[39]_i_1_n_1             | RST_IBUF                      |                6 |             40 |
+|  pixel_clk               |                                                     |                               |               20 |             45 |
+|  n_0_2782_BUFG           |                                                     |                               |               30 |             73 |
++--------------------------+-----------------------------------------------------+-------------------------------+------------------+----------------+
 
 

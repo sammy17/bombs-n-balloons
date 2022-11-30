@@ -80,7 +80,7 @@ module vga_top(
      input [VGA_VAL_SIZE-1:0] char_pos_y,
      input [NUM_BULLETS*VGA_VAL_SIZE-1:0] bullet_pos_x,
      input [NUM_BULLETS*VGA_VAL_SIZE-1:0] bullet_pos_y,
-     input [NUM_BULLETS-1:0] bullet_en,
+     input [10-1:0] bullet_en,
      input wire CLK100MHZ,
      input rst,
      output reg [3:0] VGA_R,
@@ -89,6 +89,10 @@ module vga_top(
      output wire VGA_HS,
      output wire VGA_VS
  );
+    parameter GAME_SCENE = 0;
+    parameter GAME_OVER_SCENE = 1;
+    reg scene;
+    
     parameter VGA_VAL_SIZE = 11;
     
     reg pclk_div_cnt;
@@ -114,6 +118,23 @@ module vga_top(
     reg [3:0] col_id;
     wire [7:0] digit_pixel_data;
     
+    wire timer_clk;
+    timer_clk_generator tcg (.CLK100MHZ (CLK100MHZ), .out_clk(timer_clk));
+   
+    always@(posedge timer_clk, posedge rst) begin
+        if (rst) begin
+            display_time_val <= 60;
+            scene <= GAME_SCENE;
+        end
+        else begin
+            scene <= GAME_SCENE;
+            case (display_time_val)
+                0: scene <= GAME_OVER_SCENE;
+                default: display_time_val <= display_time_val-1;
+            endcase
+        end
+    end
+    
     font_rom fr (pixel_clk, {ascii_val, row_id}, digit_pixel_data);
     ascii_converter (dec_digit, ascii_val);
     
@@ -129,8 +150,8 @@ module vga_top(
     // balloons    
     parameter balloon_w = 18;
     parameter balloon_h = 24;
-    parameter balloon_start_addr = char_start_addr + char_w*char_h - 1;
-    parameter balloon2_start_addr = balloon_start_addr + balloon_w*balloon_h - 1;
+    parameter balloon_start_addr = char_start_addr + char_w*char_h ;
+    parameter balloon2_start_addr = balloon_start_addr + balloon_w*balloon_h ;
     reg [11:0] balloon_addr_reg;
     
     parameter NUM_BULLETS = 10;
@@ -172,8 +193,8 @@ module vga_top(
     
     
     // bullet
-    reg [VGA_VAL_SIZE-1:0] bullet_x [2:0];
-    reg [VGA_VAL_SIZE-1:0] bullet_y [2:0];
+//    reg [VGA_VAL_SIZE-1:0] bullet_x [2:0];
+//    reg [VGA_VAL_SIZE-1:0] bullet_y [2:0];
 //    reg bullet_en_r [NUM_BULLETS-1:0];
 //    always@(*) begin
 //        bullet_x[0] <= bullet_pos_x;
@@ -186,12 +207,17 @@ module vga_top(
 //    end
     parameter bullet_w = 8;
     parameter bullet_h = 3;
-    parameter bullet_start_addr = balloon2_start_addr +  balloon_w*balloon_h - 1;
+    parameter bullet_start_addr = balloon2_start_addr +  balloon_w*balloon_h ;
 
-    
+    // game over image
+    parameter gameover_w = 150;
+    parameter gameover_h = 22;
+    parameter gameover_x = 220;
+    parameter gameover_y = 100;
+    parameter gameover_start_addr = bullet_start_addr +  bullet_w*bullet_h;
 
     // bram
-    reg[11:0] bram_addr;
+    reg[15:0] bram_addr;
     wire[11:0] pixel_data;
     block_ram bram (.clk (pixel_clk), .addr (bram_addr), .dout (pixel_data));
     
@@ -249,16 +275,14 @@ module vga_top(
              VGA_B <= 4'h0;
          end
         // Image to be displayed
-         else begin
+         else if (scene == GAME_SCENE) begin
+//         else begin
             if ((vga_hcnt >= char_pos_x && vga_hcnt < (char_pos_x + char_w)) &&
                 (vga_vcnt >= char_pos_y && vga_vcnt < (char_pos_y + char_h))) begin                
-              bram_addr <= char_start_addr + (((vga_vcnt - char_pos_y - 1)*char_w) + (vga_hcnt - char_pos_x)); 
-              VGA_R <= pixel_data[11:8];
-              VGA_G <= pixel_data[7:4];
-              VGA_B <= pixel_data[3:0];
-              // VGA_R <= 4'h0;
-              // VGA_G <= 4'h0;
-              // VGA_B <= 4'h0;
+                bram_addr <= char_start_addr + (((vga_vcnt - char_pos_y )*char_w) + (vga_hcnt - char_pos_x)); 
+                VGA_R <= pixel_data[11:8];
+                VGA_G <= pixel_data[7:4];
+                VGA_B <= pixel_data[3:0];
             end
             else begin
                 VGA_R <= 4'h0;
@@ -270,7 +294,7 @@ module vga_top(
             for (i=0; i<3; i=i+1) begin
                 if ( b_en[i] && ((vga_hcnt >= balloon_x[i] && vga_hcnt < (balloon_x[i] + balloon_w)) &&
                     (vga_vcnt >= balloon_y[i] && vga_vcnt < (balloon_y[i] + balloon_h)))) begin                
-                          bram_addr <= balloon_addr_reg + (((vga_vcnt - balloon_y[i] - 1)*balloon_w) + (vga_hcnt - balloon_x[i])); 
+                          bram_addr <= balloon_addr_reg + (((vga_vcnt - balloon_y[i])*balloon_w) + (vga_hcnt - balloon_x[i])); 
                           VGA_R <= pixel_data[11:8];
                           VGA_G <= pixel_data[7:4];
                           VGA_B <= pixel_data[3:0];
@@ -279,8 +303,8 @@ module vga_top(
             
             
 //            generate
-            for (j=0; j<NUM_BULLETS; j=j+1) begin  // 3 bullets for now
-                if ( bullet_en[j] && vga_hcnt >= ((bullet_pos_x>>(11*i))& 11'h7ff) && vga_hcnt < (((bullet_pos_x>>(11*i)) & 11'h7ff) + bullet_w) &&
+            for (i=0; i<NUM_BULLETS; i=i+1) begin  // 3 bullets for now
+                if ( bullet_en[i] && vga_hcnt >= ((bullet_pos_x>>(11*i))& 11'h7ff) && vga_hcnt < (((bullet_pos_x>>(11*i)) & 11'h7ff) + bullet_w) &&
                     vga_vcnt >= ((bullet_pos_y>>(11*i)) & 11'h7ff) && vga_vcnt < ((bullet_pos_y>>(11*i)) & 11'h7ff) + bullet_h ) begin                
                           bram_addr <= bullet_start_addr + (((vga_vcnt - ((bullet_pos_y>>(11*i)) & 11'h7ff) - 1)*bullet_w) + (vga_hcnt - ((bullet_pos_x>>(11*i)) & 11'h7ff))); 
                           VGA_R <= pixel_data[11:8];
@@ -289,8 +313,9 @@ module vga_top(
                 end
             end
 //            endgenerate
-        end
-                   // timer digit 0
+//        end
+
+            // timer digit 0
            if ((vga_hcnt >= d0_pos_x && vga_hcnt <= (d0_pos_x + dig_W) ) &&
              (vga_vcnt >= d0_pos_y && vga_vcnt <= d0_pos_y + dig_H)) begin
                  dec_digit <= display_time_val % 10;
@@ -331,6 +356,22 @@ module vga_top(
                         end
                  endcase             
             end
+        end
+        else begin // scene == game over scene
+            if ((vga_hcnt >= gameover_x && vga_hcnt < (gameover_x + gameover_w)) &&
+                (vga_vcnt >= gameover_y && vga_vcnt < (gameover_y + gameover_h))) begin                
+                  bram_addr <= gameover_start_addr + (((vga_vcnt - gameover_y)*gameover_w) + (vga_hcnt - gameover_x)); 
+                  VGA_R <= pixel_data[11:8];
+                  VGA_G <= pixel_data[7:4];
+                  VGA_B <= pixel_data[3:0];
+            end
+            else begin
+                VGA_R <= 4'h0;
+                VGA_G <= 4'h0;
+                VGA_B <= 4'h0;
+            end
+        end         
         
     end
+    
 endmodule

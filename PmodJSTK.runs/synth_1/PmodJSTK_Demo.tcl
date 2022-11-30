@@ -46,6 +46,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Downloads/font_rom.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/spiCtrl.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/ssdCtrl.v
+  C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/timer.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v
 }

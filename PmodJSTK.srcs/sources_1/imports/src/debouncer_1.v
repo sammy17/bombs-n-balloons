@@ -28,10 +28,30 @@ output reg  out  ;
 
 reg tmp0, tmp1;
 
+reg [7:0] counter = 0;
+reg start_count = 0;
+
+always@(posedge clk) begin
+    if (start_count)
+        counter = counter + 1;
+end
+
 always@(posedge clk) begin
     tmp0 <= in;
     tmp1 <= ~tmp0;
     out <= tmp0 & tmp1;
+//    if (in==1 && ~start_count) begin
+//        out <= 1;
+//        start_count <= 1;
+//    end
+//    else if (out==1) begin
+//        out <= 0;
+//        start_count <= start_count;
+//    end
+//    else if (counter==8'd4) begin
+//        out <= 0;
+//        start_count <= 0;
+//    end
 end
 
 endmodule

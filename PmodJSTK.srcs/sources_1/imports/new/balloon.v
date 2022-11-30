@@ -114,7 +114,7 @@ generate
             if (rst) begin
                 en_r[i] <= 1;
             end
-            else if  ((bullet_x[((i+1)*11)-1:i*11] > x) & (bullet_x[((i+1)*11)-1:i*11] < x+BWIDTH) & (bullet_y[((i+1)*11)-1:i*11] > y) & (bullet_y[((i+1)*11)-1:i*11] < y+BHEIGHT) & (en)) begin
+            else if  ((bullet_x[((i+1)*11)-1:i*11] > x) & (bullet_x[((i+1)*11)-1:i*11] < x+BWIDTH) & (bullet_y[((i+1)*11)-1:i*11] > y-10) & (bullet_y[((i+1)*11)-1:i*11] < y+BHEIGHT) & (en)) begin
                 en_r[i] <= 0;
             end
             else if (~en & y==-11'd20) begin
