@@ -119,7 +119,15 @@ module vga_top(
     wire [7:0] digit_pixel_data;
     
     wire timer_clk;
+    reg [5:0] timer_counter;
     timer_clk_generator tcg (.CLK100MHZ (CLK100MHZ), .out_clk(timer_clk));
+    
+    always@(posedge timer_clk) begin
+        if (rst) 
+            timer_counter <= 0;
+        else 
+            timer_counter <= timer_counter + 6'd1;
+    end
    
     always@(posedge timer_clk, posedge rst) begin
         if (rst) begin
@@ -152,44 +160,67 @@ module vga_top(
     parameter balloon_h = 24;
     parameter balloon_start_addr = char_start_addr + char_w*char_h ;
     parameter balloon2_start_addr = balloon_start_addr + balloon_w*balloon_h ;
-    reg [11:0] balloon_addr_reg;
+    reg [15:0] balloon_addr_reg;
     
     parameter NUM_BULLETS = 10;
+    parameter NUM_BALLOONS = 8;
+    parameter NUM_BOMBS = 4;
     
-    wire [VGA_VAL_SIZE-1:0] balloon_x [2:0];
-    wire [VGA_VAL_SIZE-1:0] balloon_y [2:0]; 
-    reg  [VGA_VAL_SIZE-1:0] min [2:0]; 
-    wire [2:0] b_en;
+    wire [VGA_VAL_SIZE-1:0] balloon_x [NUM_BALLOONS-1:0];
+    wire [VGA_VAL_SIZE-1:0] balloon_y [NUM_BALLOONS-1:0]; 
+    wire [VGA_VAL_SIZE-1:0] bomb_x [NUM_BOMBS-1:0];
+    wire [VGA_VAL_SIZE-1:0] bomb_y [NUM_BOMBS-1:0]; 
+    reg  [VGA_VAL_SIZE-1:0] min [NUM_BALLOONS-1:0]; 
+    wire [NUM_BALLOONS-1:0] b_en;
+    wire [NUM_BOMBS-1:0] bo_en;
     
     wire frame_end;
     assign frame_end = (vga_hcnt == 0 && vga_vcnt == 0) ;
     
-    balloon #(.START(4),.NUM_BULLETS(NUM_BULLETS)) b1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[0]), .x(balloon_x[0]), .y(balloon_y[0]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[0]));
-    balloon #(.START(150),.NUM_BULLETS(NUM_BULLETS)) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[1]), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[1]));
-    balloon #(.START(400),.NUM_BULLETS(NUM_BULLETS)) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .min(min[2]), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[2]));
+    genvar k;
+    generate
+        for (k=0; k<NUM_BALLOONS; k=k+1) begin
+            balloon #(.START(50*k+k*k+5),.NUM_BULLETS(NUM_BULLETS)) b1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[k]), .y(balloon_y[k]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[k]));
+//            balloon #(.START(150),.NUM_BULLETS(NUM_BULLETS)) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[1]));
+//            balloon #(.START(400),.NUM_BULLETS(NUM_BULLETS)) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[2]));
+//            balloon #(.START(500),.NUM_BULLETS(NUM_BULLETS)) b4 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[3]), .y(balloon_y[3]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[3]));
+        end
+    endgenerate
     
-    always@(*) begin
-        min[0] <= 40;
-        min[1] <= 200;
-        min[2] <= 400;
-    end
+    genvar l;
+    generate
+        for (l=0; l<NUM_BOMBS; l=l+1) begin
+            bomb #(.START(50*l+l*l+5),.NUM_BULLETS(NUM_BULLETS)) bomb1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(bomb_x[l]), .y(bomb_y[l]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(bo_en[l]));
+//            balloon #(.START(150),.NUM_BULLETS(NUM_BULLETS)) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[1]));
+//            balloon #(.START(400),.NUM_BULLETS(NUM_BULLETS)) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[2]));
+//            balloon #(.START(500),.NUM_BULLETS(NUM_BULLETS)) b4 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[3]), .y(balloon_y[3]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[3]));
+        end
+    endgenerate
     
-    reg [15:0] balloon_clk;
-    reg balloon_anim;
-    always @(posedge CLK100MHZ) begin
-         balloon_clk <= balloon_clk + 1;
-         if (balloon_clk == 16'd60000) begin
-            balloon_clk <= 0;
-            balloon_anim <= !balloon_anim;
-         end
-    end
     
-    always @* begin
-        case (balloon_anim)
-            1: balloon_addr_reg = balloon_start_addr;
-            0: balloon_addr_reg = balloon2_start_addr;
-        endcase
-    end
+    
+//    always@(*) begin
+//        min[0] <= 40;
+//        min[1] <= 200;
+//        min[2] <= 400;
+//    end
+    
+//    reg [15:0] balloon_clk;
+//    reg balloon_anim;
+//    always @(posedge CLK100MHZ) begin
+//         balloon_clk <= balloon_clk + 1;
+//         if (balloon_clk == 16'd60000) begin
+//            balloon_clk <= 0;
+//            balloon_anim <= !balloon_anim;
+//         end
+//    end
+    
+//    always @* begin
+//        case (balloon_anim)
+//            1: balloon_addr_reg = balloon_start_addr;
+//            0: balloon_addr_reg = balloon2_start_addr;
+//        endcase
+//    end
     
     
     // bullet
@@ -216,10 +247,45 @@ module vga_top(
     parameter gameover_y = 100;
     parameter gameover_start_addr = bullet_start_addr +  bullet_w*bullet_h;
 
+    // bomb
+    parameter bomb_w = 16;
+    parameter bomb_h = 24;
+    parameter bomb_start_addr = gameover_start_addr + gameover_w*gameover_h ;
+    parameter bomb2_start_addr = bomb_start_addr + bomb_w*bomb_h ;
+    reg [15:0] bomb_addr_reg;
+    
+//    wire [VGA_VAL_SIZE-1:0] bomb_x = 20; // remove these numbers and wire to a bomb generator 
+//    wire [VGA_VAL_SIZE-1:0] bomb_y = 100;
+
     // bram
     reg[15:0] bram_addr;
     wire[11:0] pixel_data;
     block_ram bram (.clk (pixel_clk), .addr (bram_addr), .dout (pixel_data));
+    
+    // balloon and bomb animation
+    reg [15:0] anim_clk;
+    reg do_anim;
+    always @(posedge CLK100MHZ) begin
+         anim_clk <= anim_clk + 1;
+         if (anim_clk == 16'd40000) begin
+            anim_clk <= 0;
+            do_anim <= !do_anim;
+         end
+    end
+    
+    always @* begin
+        case (do_anim)
+            1: begin
+            balloon_addr_reg <= balloon_start_addr;
+            bomb_addr_reg <= bomb_start_addr;
+//            cloud_x[0] <= cloud_x[0] + 1;
+            end
+            0: begin
+            balloon_addr_reg <= balloon2_start_addr;
+            bomb_addr_reg <= bomb2_start_addr;
+            end
+        endcase
+    end
     
     integer i;
 
@@ -291,8 +357,8 @@ module vga_top(
             end
                  
 
-            for (i=0; i<3; i=i+1) begin
-                if ( b_en[i] && ((vga_hcnt >= balloon_x[i] && vga_hcnt < (balloon_x[i] + balloon_w)) &&
+            for (i=0; i<NUM_BALLOONS; i=i+1) begin //(timer_counter*NUM_BALLOONS>i*60) &&
+                if (  b_en[i] && ((vga_hcnt >= balloon_x[i] && vga_hcnt < (balloon_x[i] + balloon_w)) &&
                     (vga_vcnt >= balloon_y[i] && vga_vcnt < (balloon_y[i] + balloon_h)))) begin                
                           bram_addr <= balloon_addr_reg + (((vga_vcnt - balloon_y[i])*balloon_w) + (vga_hcnt - balloon_x[i])); 
                           VGA_R <= pixel_data[11:8];
@@ -355,6 +421,17 @@ module vga_top(
                         VGA_B <= 4'hf;
                         end
                  endcase             
+            end
+            
+            //bomb
+            for (i=0; i<NUM_BOMBS; i=i+1) begin //(timer_counter*NUM_BOMBS>i*60) &&
+                if (  (vga_hcnt >= bomb_x[i] && vga_hcnt < (bomb_x[i] + bomb_w)) &&
+                    (vga_vcnt >= bomb_y[i] && vga_vcnt < (bomb_y[i] + bomb_h))) begin                
+                      bram_addr <= bomb_addr_reg + (((vga_vcnt - bomb_y[i])*bomb_w) + (vga_hcnt - bomb_x[i])); 
+                      VGA_R <= pixel_data[11:8];
+                      VGA_G <= pixel_data[7:4];
+                      VGA_B <= pixel_data[3:0];
+                end
             end
         end
         else begin // scene == game over scene

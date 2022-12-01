@@ -40,6 +40,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/SPImode0.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/block_ram.v
+  C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/clock_div.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/clock_div_4.v
   C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/src/debouncer_1.v

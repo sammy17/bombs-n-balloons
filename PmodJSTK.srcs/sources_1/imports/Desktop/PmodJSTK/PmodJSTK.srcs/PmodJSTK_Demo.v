@@ -44,7 +44,7 @@
    (x <= 32) ? 5 : \
    (x <= 64) ? 6 
 
-`define NOJSTK
+//`define NOJSTK
 
 module PmodJSTK_Demo(
     CLK,
@@ -258,102 +258,88 @@ module PmodJSTK_Demo(
                 end
             endgenerate
             
-//                    always@ (posedge clk_out) begin
-//                        if(RST == 1'b1)
-//                        begin
-//                              bullet_pos_x[((0+1)*11)-1:0*11] <= 550;
-//                              bullet_pos_y[((0+1)*11)-1:0*11] <= char_y + 50 ;//- 100;
-//        //				      bullet_done <= 0;
-//                              bullet_en <= 10'd0;
-//                        end
-//                        else if (bullet_pos_x[((0+1)*11)-1:0*11]==0) begin
-//        //		              bullet_done <= 1;
-//                              bullet_en[0] <= 0;
-//                              bullet_pos_x[((0+1)*11)-1:0*11] <= 1;
-//                              bullet_pos_y[((0+1)*11)-1:0*11] <= bullet_pos_y[((0+1)*11)-1:0*11];
-//                        end
-//                        else if (bullet_en[0]) begin
-//        //		              bullet_done <= 0;
-//                              bullet_en[0] <= 1;
-//                              bullet_pos_x[((0+1)*11)-1:0*11] <= bullet_pos_x[((0+1)*11)-1:0*11] - 1;
-//                              bullet_pos_y[((0+1)*11)-1:0*11] <= bullet_pos_y[((0+1)*11)-1:0*11];
-//                        end
-//                        else if (shoot) begin
-//        //		              bullet_done <= 0;
-//                              if (~bullet_en[0]) begin // Only set the bullet enable if it's not enable
-//                                bullet_en[0] <= (b_idx==0);
-//                              end
-//                              bullet_pos_x[((0+1)*11)-1:0*11] <= 550;
-//                              bullet_pos_y[((0+1)*11)-1:0*11] <= char_y + 10;
-//                        end
-//                        else begin
-//        //		              bullet_done <= 0;
-//                              bullet_en[0] <= bullet_en[0];
-//                              bullet_pos_x[((0+1)*11)-1:0*11] <= bullet_pos_x[((0+1)*11)-1:0*11];
-//                              bullet_pos_y[((0+1)*11)-1:0*11] <= bullet_pos_y[((0+1)*11)-1:0*11];
-//                        end
-//                    end
 
-
-//                    always@ (posedge clk_out) begin
-//                        if(RST == 1'b1)
-//                        begin
-//                              bullet_pos_x[((i+1)*11)-1:i*11] <= 550;
-//                              bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 50 ;//- 100;
-//        //				      bullet_done <= 0;
-//                              bullet_en[i] <= 0;
-//                        end
-//                        else if (bullet_pos_x[((i+1)*11)-1:i*11]==0) begin
-//        //		              bullet_done <= 1;
-//                              bullet_en[i] <= 0;
-//                              bullet_pos_x[((i+1)*11)-1:i*11] <= 1;
-//                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
-//                        end
-//                        else if (bullet_en[i]) begin
-//        //		              bullet_done <= 0;
-//                              bullet_en[i] <= 1;
-//                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11] - 1;
-//                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
-//                        end
-//                        else if (shoot_r) begin
-//        //		              bullet_done <= 0;
-//                              if (~bullet_en[i]) begin // Only set the bullet enable if it's not enable
-//                                bullet_en[i] <= (b_idx==i);
-//                              end
-//                              bullet_pos_x[((i+1)*11)-1:i*11] <= 550;
-//                              bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 10;
-//                        end
-//                        else begin
-//        //		              bullet_done <= 0;
-//                              bullet_en[i] <= bullet_en[i];
-//                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11];
-//                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
-//                        end
-//                    end
 
 
 `else
 			//Bullet modelling
-			always@ (posedge clk_out)
-			begin
-		        if(RST == 1'b1)
-		        begin
-		              bullet_pos_x <= 550;
-				      bullet_pos_y <= char_y + 15 ;//- 100;
-		        end
-		        else
-		        begin 
-		              if(bullet_pos_x == 0)
-		              begin
-		                      bullet_pos_x <=  550;
-		              end
-		              else if(LED)
-		              begin   
-		                      bullet_pos_y <= char_y+10;
-		                      bullet_pos_x <= bullet_pos_x - 1;
-		              end
-		        end
-			end
+//			always@ (posedge clk_out)
+//			begin
+//		        if(RST == 1'b1)
+//		        begin
+//		              bullet_pos_x <= 550;
+//				      bullet_pos_y <= char_y + 15 ;//- 100;
+//		        end
+//		        else
+//		        begin 
+//		              if(bullet_pos_x == 0)
+//		              begin
+//		                      bullet_pos_x <=  550;
+//		              end
+//		              else if(LED)
+//		              begin   
+//		                      bullet_pos_y <= char_y+10;
+//		                      bullet_pos_x <= bullet_pos_x - 1;
+//		              end
+//		        end
+//			end
+
+            debouncer debouncer(.clk(clk_out), .in(jstkData[1]), .out(shoot_r));
+            
+//            assign shoot_r = jstkData[1];
+
+            always@(posedge clk_out) begin
+                if(RST == 1'b1)
+                    b_idx <= 0;
+                else if (b_idx==NUM_BULLETS)
+                    b_idx <= 0;
+                else if (shoot_r)
+                    b_idx <= b_idx + 1;
+            end
+
+            genvar i;
+            generate
+                for ( i=0; i<NUM_BULLETS; i=i+1 ) begin
+                    always@ (posedge clk_out) begin
+                        if(RST == 1'b1)
+                        begin
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= 550;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 50 ;//- 100;
+        //				      bullet_done <= 0;
+                              bullet_en[i] <= 0;
+                        end
+                        else if (bullet_pos_x[((i+1)*11)-1:i*11]==0) begin
+        //		              bullet_done <= 1;
+                              bullet_en[i] <= 0;
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= 1;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
+                        else if (bullet_en[i]) begin
+        //		              bullet_done <= 0;
+                              bullet_en[i] <= 1;
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11] - 1;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
+                        else if (shoot_r) begin
+        //		              bullet_done <= 0;
+                              if (~bullet_en[i]) begin // Only set the bullet enable if it's not enable
+                                bullet_en[i] <= (b_idx==i);
+                              end
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= 550;
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 15;
+                        end
+                        else begin
+        //		              bullet_done <= 0;
+                              bullet_en[i] <= bullet_en[i];
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11];
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
+                    end
+                end
+            endgenerate
+
+
+
 			
 `endif
 			
@@ -377,13 +363,13 @@ module PmodJSTK_Demo(
 		        if(RST == 1'b1)
 				begin
 			        //LED <= 3'b000;
-			        LED <= 8'b00000000;
-					y_data <= {2'b00,LED};
+//			        LED <= 8'b00000000;
+					y_data <= 10'd0; //{2'b00,LED};
 					char_y <= upper_limit+200;
 					
 				end
 				else begin
-				    LED <= {jstkData[1], {jstkData[2], jstkData[0]}};
+//				    LED <= {jstkData[1], {jstkData[2], jstkData[0]}};
 				    y_data <= {{1'b0},jstkData[25:24], jstkData[39:32]};
 	                if (y_data > upper_threshold)   
 	                begin

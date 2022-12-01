@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module balloon( rst, clk, frame_end, min, x, y, bullet_x, bullet_y, en);
+module balloon( rst, clk, frame_end, x, y, bullet_x, bullet_y, en);
 parameter START = 4;
 parameter MAXV = 480;
 parameter MAXH = 640;
@@ -29,7 +29,7 @@ parameter NUM_BULLETS = 10;
 //parameter MAXX = 550;
 
 input clk, frame_end, rst;
-input [11*NUM_BULLETS-1:0] min;
+//input [11*NUM_BULLETS-1:0] min;
 input [11*NUM_BULLETS-1:0] bullet_x, bullet_y;
 output reg [10:0] x;
 output reg [10:0] y;

@@ -35,7 +35,7 @@ always@(posedge clk_in) begin
 
     counter <= counter + 1;
 
-    if (counter == (12_500_000/40)) begin
+    if (counter == (12_500_000/80)) begin
 
         counter <= 0;
 

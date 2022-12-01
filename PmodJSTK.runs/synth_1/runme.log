@@ -15,14 +15,14 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 14284 
+INFO: Helper process launched with PID 22596 
 WARNING: [Synth 8-6901] identifier 'VGA_VAL_SIZE' is used before its declaration [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:80]
 WARNING: [Synth 8-6901] identifier 'NUM_BULLETS' is used before its declaration [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:81]
 WARNING: [Synth 8-6901] identifier 'VGA_VAL_SIZE' is used before its declaration [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:81]
 WARNING: [Synth 8-6901] identifier 'NUM_BULLETS' is used before its declaration [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:82]
 WARNING: [Synth 8-6901] identifier 'VGA_VAL_SIZE' is used before its declaration [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:82]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 829.164 ; gain = 186.785
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 830.113 ; gain = 188.500
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'PmodJSTK_Demo' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v:49]
 	Parameter NUM_BULLETS bound to: 10 - type: integer 
@@ -32,8 +32,8 @@ INFO: [Synth 8-6157] synthesizing module 'PmodJSTK_Demo' [C:/Users/chath/bullet_
 	Parameter button_upper_limit bound to: 858 - type: integer 
 	Parameter upper_threshold bound to: 700 - type: integer 
 	Parameter lower_threshold bound to: 200 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/.Xil/Vivado-11016-ECE-PHO115-26/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/.Xil/Vivado-11016-ECE-PHO115-26/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/.Xil/Vivado-16140-ECE-PHO115-26/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/.Xil/Vivado-16140-ECE-PHO115-26/realtime/clk_wiz_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'PmodJSTK' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK.v:24]
 INFO: [Synth 8-6157] synthesizing module 'spiCtrl' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/spiCtrl.v:27]
 	Parameter Idle bound to: 3'b000 
@@ -89,6 +89,8 @@ INFO: [Synth 8-6157] synthesizing module 'vga_top' [C:/Users/chath/bullet_added/
 	Parameter balloon_start_addr bound to: 1760 - type: integer 
 	Parameter balloon2_start_addr bound to: 2192 - type: integer 
 	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter NUM_BALLOONS bound to: 8 - type: integer 
+	Parameter NUM_BOMBS bound to: 4 - type: integer 
 	Parameter bullet_w bound to: 8 - type: integer 
 	Parameter bullet_h bound to: 3 - type: integer 
 	Parameter bullet_start_addr bound to: 2624 - type: integer 
@@ -97,14 +99,12 @@ INFO: [Synth 8-6157] synthesizing module 'vga_top' [C:/Users/chath/bullet_added/
 	Parameter gameover_x bound to: 220 - type: integer 
 	Parameter gameover_y bound to: 100 - type: integer 
 	Parameter gameover_start_addr bound to: 2648 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'timer_clk_generator' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/timer.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'timer_clk_generator' (12#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/timer.v:23]
-INFO: [Synth 8-6157] synthesizing module 'font_rom' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Downloads/font_rom.v:9]
-INFO: [Synth 8-6155] done synthesizing module 'font_rom' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Downloads/font_rom.v:9]
-INFO: [Synth 8-6157] synthesizing module 'ascii_converter' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:54]
-INFO: [Synth 8-6155] done synthesizing module 'ascii_converter' (14#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:54]
+	Parameter bomb_w bound to: 16 - type: integer 
+	Parameter bomb_h bound to: 24 - type: integer 
+	Parameter bomb_start_addr bound to: 5948 - type: integer 
+	Parameter bomb2_start_addr bound to: 6332 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'balloon' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
-	Parameter START bound to: 4 - type: integer 
+	Parameter START bound to: 5 - type: integer 
 	Parameter MAXV bound to: 480 - type: integer 
 	Parameter MAXH bound to: 640 - type: integer 
 	Parameter NUM_BULLETS bound to: 10 - type: integer 
@@ -112,28 +112,110 @@ INFO: [Synth 8-6157] synthesizing module 'balloon' [C:/Users/chath/bullet_added/
 	Parameter BHEIGHT bound to: 24 - type: integer 
 INFO: [Synth 8-6157] synthesizing module 'LFSR' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/bshooter_character/bshooter_character.srcs/sources_1/new/LFSR.v:1]
 	Parameter NUM_BITS bound to: 11 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'LFSR' (15#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/bshooter_character/bshooter_character.srcs/sources_1/new/LFSR.v:1]
-INFO: [Synth 8-6155] done synthesizing module 'balloon' (16#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'LFSR' (12#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/bshooter_character/bshooter_character.srcs/sources_1/new/LFSR.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'balloon' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
 INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized0' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
-	Parameter START bound to: 150 - type: integer 
+	Parameter START bound to: 56 - type: integer 
 	Parameter MAXV bound to: 480 - type: integer 
 	Parameter MAXH bound to: 640 - type: integer 
 	Parameter NUM_BULLETS bound to: 10 - type: integer 
 	Parameter BWIDTH bound to: 18 - type: integer 
 	Parameter BHEIGHT bound to: 24 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized0' (16#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized0' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
 INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized1' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
-	Parameter START bound to: 400 - type: integer 
+	Parameter START bound to: 109 - type: integer 
 	Parameter MAXV bound to: 480 - type: integer 
 	Parameter MAXH bound to: 640 - type: integer 
 	Parameter NUM_BULLETS bound to: 10 - type: integer 
 	Parameter BWIDTH bound to: 18 - type: integer 
 	Parameter BHEIGHT bound to: 24 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized1' (16#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized1' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized2' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+	Parameter START bound to: 164 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized2' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized3' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+	Parameter START bound to: 221 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized3' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized4' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+	Parameter START bound to: 280 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized4' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized5' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+	Parameter START bound to: 341 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized5' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6157] synthesizing module 'balloon__parameterized6' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+	Parameter START bound to: 404 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'balloon__parameterized6' (13#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/balloon.v:23]
+INFO: [Synth 8-6157] synthesizing module 'bomb' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+	Parameter START bound to: 5 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'bomb' (14#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+WARNING: [Synth 8-7023] instance 'bomb1' of module 'bomb' has 9 connections declared, but only 8 given [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:193]
+INFO: [Synth 8-6157] synthesizing module 'bomb__parameterized0' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+	Parameter START bound to: 56 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'bomb__parameterized0' (14#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+WARNING: [Synth 8-7023] instance 'bomb1' of module 'bomb' has 9 connections declared, but only 8 given [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:193]
+INFO: [Synth 8-6157] synthesizing module 'bomb__parameterized1' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+	Parameter START bound to: 109 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'bomb__parameterized1' (14#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+WARNING: [Synth 8-7023] instance 'bomb1' of module 'bomb' has 9 connections declared, but only 8 given [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:193]
+INFO: [Synth 8-6157] synthesizing module 'bomb__parameterized2' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+	Parameter START bound to: 164 - type: integer 
+	Parameter MAXV bound to: 480 - type: integer 
+	Parameter MAXH bound to: 640 - type: integer 
+	Parameter NUM_BULLETS bound to: 10 - type: integer 
+	Parameter BWIDTH bound to: 18 - type: integer 
+	Parameter BHEIGHT bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'bomb__parameterized2' (14#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/new/bomb.v:23]
+WARNING: [Synth 8-7023] instance 'bomb1' of module 'bomb' has 9 connections declared, but only 8 given [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:193]
+INFO: [Synth 8-6157] synthesizing module 'timer_clk_generator' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/timer.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'timer_clk_generator' (15#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/timer.v:23]
+INFO: [Synth 8-6157] synthesizing module 'font_rom' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Downloads/font_rom.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'font_rom' (16#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Downloads/font_rom.v:9]
+INFO: [Synth 8-6157] synthesizing module 'ascii_converter' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:54]
+INFO: [Synth 8-6155] done synthesizing module 'ascii_converter' (17#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:54]
 INFO: [Synth 8-6157] synthesizing module 'block_ram' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/block_ram.v:3]
 	Parameter BLOCK_SIZE bound to: 12 - type: integer 
 	Parameter ADDR_SIZE bound to: 16 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'block_ram' (17#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/block_ram.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'block_ram' (18#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/block_ram.v:3]
 INFO: [Synth 8-6157] synthesizing module 'vga_controller_640_60' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:11]
 	Parameter HMAX bound to: 800 - type: integer 
 	Parameter VMAX bound to: 525 - type: integer 
@@ -144,113 +226,114 @@ INFO: [Synth 8-6157] synthesizing module 'vga_controller_640_60' [C:/Users/chath
 	Parameter VFP bound to: 482 - type: integer 
 	Parameter VSP bound to: 484 - type: integer 
 	Parameter SPP bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'vga_controller_640_60' (18#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'vga_top' (19#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:79]
+INFO: [Synth 8-6155] done synthesizing module 'vga_controller_640_60' (19#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:11]
+WARNING: [Synth 8-6014] Unused sequential element timer_counter_reg was removed.  [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:127]
+INFO: [Synth 8-6155] done synthesizing module 'vga_top' (20#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:79]
 WARNING: [Synth 8-3848] Net LED in module/entity PmodJSTK_Demo does not have driver. [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v:82]
-INFO: [Synth 8-6155] done synthesizing module 'PmodJSTK_Demo' (20#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v:49]
-WARNING: [Synth 8-3331] design block_ram has unconnected port clk
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[109]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[108]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[107]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[106]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[105]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[104]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[103]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[102]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[101]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[100]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[99]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[98]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[97]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[96]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[95]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[94]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[93]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[92]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[91]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[90]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[89]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[88]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[87]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[86]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[85]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[84]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[83]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[82]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[81]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[80]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[79]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[78]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[77]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[76]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[75]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[74]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[73]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[72]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[71]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[70]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[69]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[68]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[67]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[66]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[65]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[64]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[63]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[62]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[61]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[60]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[59]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[58]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[57]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[56]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[55]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[54]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[53]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[52]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[51]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[50]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[49]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[48]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[47]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[46]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[45]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[44]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[43]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[42]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[41]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[40]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[39]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[38]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[37]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[36]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[35]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[34]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[33]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[32]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[31]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[30]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[29]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[28]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[27]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[26]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[25]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[24]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[23]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[22]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[21]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[20]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[19]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[18]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[17]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[16]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[15]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[14]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[13]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[12]
-WARNING: [Synth 8-3331] design balloon__parameterized1 has unconnected port min[11]
+INFO: [Synth 8-6155] done synthesizing module 'PmodJSTK_Demo' (21#1) [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v:49]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[109]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[108]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[107]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[106]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[105]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[104]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[103]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[102]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[101]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[100]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[99]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[98]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[97]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[96]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[95]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[94]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[93]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[92]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[91]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[90]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[89]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[88]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[87]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[86]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[85]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[84]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[83]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[82]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[81]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[80]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[79]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[78]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[77]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[76]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[75]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[74]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[73]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[72]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[71]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[70]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[69]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[68]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[67]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[66]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[65]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[64]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[63]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[62]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[61]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[60]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[59]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[58]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[57]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[56]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[55]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[54]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[53]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[52]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[51]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[50]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[49]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[48]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[47]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[46]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[45]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[44]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[43]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[42]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[41]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[40]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[39]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[38]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[37]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[36]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[35]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[34]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[33]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[32]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[31]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[30]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[29]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[28]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[27]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[26]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[25]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[24]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[23]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[22]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[21]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[20]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[19]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[18]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[17]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[16]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[15]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[14]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[13]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[12]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[11]
+WARNING: [Synth 8-3331] design bomb__parameterized2 has unconnected port min[10]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 906.711 ; gain = 264.332
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 940.348 ; gain = 298.734
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -263,10 +346,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 906.711 ; gain = 264.332
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 940.348 ; gain = 298.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 906.711 ; gain = 264.332
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 940.348 ; gain = 298.734
 ---------------------------------------------------------------------------------
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -280,20 +363,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/PmodJSTK_Demo_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1053.309 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1088.184 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1053.309 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1088.184 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1053.309 ; gain = 410.930
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1088.184 ; gain = 446.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1053.309 ; gain = 410.930
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1088.184 ; gain = 446.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -302,13 +385,13 @@ Applied set_property IO_BUFFER_TYPE = NONE for CLK. (constraint file  c:/Users/c
 Applied set_property CLOCK_BUFFER_TYPE = NONE for CLK. (constraint file  c:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
 Applied set_property DONT_TOUCH = true for instance_name. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 1053.309 ; gain = 410.930
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1088.184 ; gain = 446.570
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'pState_reg' in module 'spiCtrl'
 INFO: [Synth 8-802] inferred FSM for state register 'pState_reg' in module 'spiMode0'
 INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'Binary_To_BCD'
-WARNING: [Synth 8-3936] Found unconnected internal register 'col_id_reg' and it is trimmed from '4' to '3' bits. [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:323]
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v:365]
+WARNING: [Synth 8-3936] Found unconnected internal register 'col_id_reg' and it is trimmed from '4' to '3' bits. [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:389]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v:374]
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -338,22 +421,25 @@ INFO: [Synth 8-3354] encoded FSM with state register 'pState_reg' using encoding
                     Done |                              100 |                              110
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'Binary_To_BCD'
-WARNING: [Synth 8-327] inferring latch for variable 'col_id_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:323]
-WARNING: [Synth 8-327] inferring latch for variable 'bram_addr_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:222]
-WARNING: [Synth 8-327] inferring latch for variable 'row_id_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:138]
-WARNING: [Synth 8-327] inferring latch for variable 'dec_digit_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:139]
+WARNING: [Synth 8-327] inferring latch for variable 'col_id_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:389]
+WARNING: [Synth 8-327] inferring latch for variable 'bram_addr_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:263]
+WARNING: [Synth 8-327] inferring latch for variable 'row_id_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:146]
+WARNING: [Synth 8-327] inferring latch for variable 'dec_digit_reg' [C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.srcs/sources_1/imports/new/vga.v:147]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1053.309 ; gain = 410.930
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1088.184 ; gain = 446.570
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+-------------------+------------+----------+
 |      |RTL Partition      |Replication |Instances |
 +------+-------------------+------------+----------+
-|1     |vga_top__GB0       |           1|     23231|
-|2     |vga_top__GB1       |           1|     16675|
-|3     |block_ram          |           1|     24564|
-|4     |PmodJSTK_Demo__GC0 |           1|      6192|
+|1     |vga_top__GB0       |           1|     25202|
+|2     |vga_top__GB1       |           1|      9034|
+|3     |vga_top__GB2       |           1|     13537|
+|4     |vga_top__GB3       |           1|     13515|
+|5     |vga_top__GB4       |           1|     20804|
+|6     |vga_top__GB5       |           1|     27040|
+|7     |PmodJSTK_Demo__GC0 |           1|      6220|
 +------+-------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -362,14 +448,14 @@ Detailed RTL Component Info :
 +---Adders : 
 	   3 Input    111 Bit       Adders := 20    
 	   2 Input    110 Bit       Adders := 20    
-	   2 Input     32 Bit       Adders := 4     
+	   2 Input     32 Bit       Adders := 13    
 	   2 Input     26 Bit       Adders := 2     
 	   2 Input     24 Bit       Adders := 1     
-	   3 Input     16 Bit       Adders := 14    
+	   3 Input     16 Bit       Adders := 23    
 	   2 Input     16 Bit       Adders := 3     
-	   3 Input     13 Bit       Adders := 7     
-	   2 Input     12 Bit       Adders := 6     
-	   2 Input     11 Bit       Adders := 17    
+	   3 Input     13 Bit       Adders := 25    
+	   2 Input     12 Bit       Adders := 24    
+	   2 Input     11 Bit       Adders := 26    
 	   2 Input     10 Bit       Adders := 1     
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      5 Bit       Adders := 2     
@@ -377,7 +463,7 @@ Detailed RTL Component Info :
 	   2 Input      3 Bit       Adders := 4     
 	   2 Input      2 Bit       Adders := 1     
 +---XORs : 
-	   2 Input      1 Bit         XORs := 3     
+	   2 Input      1 Bit         XORs := 12    
 +---Registers : 
 	               40 Bit    Registers := 2     
 	               32 Bit    Registers := 1     
@@ -385,7 +471,7 @@ Detailed RTL Component Info :
 	               26 Bit    Registers := 2     
 	               24 Bit    Registers := 1     
 	               16 Bit    Registers := 3     
-	               11 Bit    Registers := 33    
+	               11 Bit    Registers := 61    
 	               10 Bit    Registers := 1     
 	                8 Bit    Registers := 4     
 	                7 Bit    Registers := 1     
@@ -394,7 +480,7 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 60    
+	                1 Bit    Registers := 150   
 +---ROMs : 
 	                              ROMs := 1     
 +---Muxes : 
@@ -405,8 +491,9 @@ Detailed RTL Component Info :
 	   2 Input     26 Bit        Muxes := 2     
 	   2 Input     24 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     13 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 1     
-	   2 Input     11 Bit        Muxes := 31    
+	   2 Input     11 Bit        Muxes := 58    
 	   2 Input     10 Bit        Muxes := 2     
 	   5 Input      8 Bit        Muxes := 1     
 	   4 Input      8 Bit        Muxes := 1     
@@ -415,14 +502,14 @@ Detailed RTL Component Info :
 	   2 Input      5 Bit        Muxes := 5     
 	   4 Input      5 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 12    
-	  17 Input      4 Bit        Muxes := 2     
+	  26 Input      4 Bit        Muxes := 2     
 	   4 Input      4 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 3     
 	   5 Input      3 Bit        Muxes := 2     
 	   4 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 102   
-	  14 Input      1 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 210   
+	  23 Input      1 Bit        Muxes := 1     
 	   5 Input      1 Bit        Muxes := 8     
 	   4 Input      1 Bit        Muxes := 4     
 	   3 Input      1 Bit        Muxes := 10    
@@ -439,7 +526,7 @@ Detailed RTL Component Info :
 	   2 Input     11 Bit       Adders := 12    
 	   2 Input      4 Bit       Adders := 1     
 +---Registers : 
-	               11 Bit    Registers := 21    
+	               11 Bit    Registers := 22    
 	                4 Bit    Registers := 1     
 	                1 Bit    Registers := 10    
 +---Muxes : 
@@ -449,22 +536,7 @@ Detailed RTL Component Info :
 	   2 Input      4 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 62    
 	   3 Input      1 Bit        Muxes := 10    
-Module timer_clk_generator 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-+---Registers : 
-	               32 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
-+---Muxes : 
-	   2 Input     32 Bit        Muxes := 1     
-Module font_rom 
-Detailed RTL Component Info : 
-+---Registers : 
-	               11 Bit    Registers := 1     
-+---ROMs : 
-	                              ROMs := 1     
-Module LFSR 
+Module LFSR__4 
 Detailed RTL Component Info : 
 +---XORs : 
 	   2 Input      1 Bit         XORs := 1     
@@ -472,7 +544,27 @@ Detailed RTL Component Info :
 	               11 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     11 Bit        Muxes := 1     
-Module balloon 
+Module balloon__parameterized3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__3 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module balloon__parameterized4 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
@@ -492,7 +584,7 @@ Detailed RTL Component Info :
 	               11 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     11 Bit        Muxes := 1     
-Module balloon__parameterized0 
+Module balloon__parameterized5 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
@@ -512,7 +604,167 @@ Detailed RTL Component Info :
 	               11 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input     11 Bit        Muxes := 1     
+Module balloon__parameterized6 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__6 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module balloon__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__5 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
 Module balloon__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__9 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module bomb__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__8 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module balloon__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__7 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module balloon 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module bomb__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__11 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module bomb__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 2     
+	   2 Input     11 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 2     
+	                1 Bit    Registers := 10    
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 12    
+Module LFSR__10 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     11 Bit        Muxes := 1     
+Module bomb 
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input     32 Bit       Adders := 1     
@@ -533,14 +785,29 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 3     
 +---Muxes : 
 	   2 Input     11 Bit        Muxes := 2     
+Module font_rom 
+Detailed RTL Component Info : 
++---Registers : 
+	               11 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module timer_clk_generator 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
 Module vga_top 
 Detailed RTL Component Info : 
 +---Adders : 
 	   3 Input    111 Bit       Adders := 20    
 	   2 Input    110 Bit       Adders := 20    
-	   3 Input     16 Bit       Adders := 14    
+	   3 Input     16 Bit       Adders := 23    
 	   2 Input     16 Bit       Adders := 2     
-	   3 Input     13 Bit       Adders := 7     
+	   3 Input     13 Bit       Adders := 25    
 	   2 Input      6 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 1     
 	   2 Input      3 Bit       Adders := 3     
@@ -550,12 +817,13 @@ Detailed RTL Component Info :
 	                1 Bit    Registers := 4     
 +---Muxes : 
 	   2 Input     16 Bit        Muxes := 1     
+	   2 Input     13 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 1     
 	   2 Input      4 Bit        Muxes := 10    
-	  17 Input      4 Bit        Muxes := 2     
+	  26 Input      4 Bit        Muxes := 2     
 	   2 Input      3 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 4     
-	  14 Input      1 Bit        Muxes := 1     
+	  23 Input      1 Bit        Muxes := 1     
 Module spiCtrl 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -666,13 +934,43 @@ BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 2 processes.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[2]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[3]'
+INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[3]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[4]'
+INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[4]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[5]'
+INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[5]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\PmodJSTK_Int/SPI_Ctrl/sndData_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\y_data_reg[10] )
+INFO: [Synth 8-3886] merging instance 'i_0/DispCtrl/AN_reg[4]' (FDR) to 'i_0/DispCtrl/AN_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/DispCtrl/AN_reg[5]' (FDR) to 'i_0/DispCtrl/AN_reg[7]'
+INFO: [Synth 8-3886] merging instance 'i_0/DispCtrl/AN_reg[6]' (FDR) to 'i_0/DispCtrl/AN_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\DispCtrl/AN_reg[7] )
 DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x96).
 DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
 DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+(C:0x97c).
+DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
+DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x12).
+DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
+DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+C.
+DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
+DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x12).
+DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
+DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+C.
+DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
+DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x12).
+DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
+DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+C.
+DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
+DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x12).
+DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
+DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+C.
+DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
+DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x12).
+DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
+DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+C.
 DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
 DSP Report: Generating DSP bram_addr2, operation Mode is: A*(B:0x12).
 DSP Report: operator bram_addr2 is absorbed into DSP bram_addr2.
@@ -690,62 +988,65 @@ DSP Report: Generating DSP bram_addr1, operation Mode is: A*(B:0x28).
 DSP Report: operator bram_addr1 is absorbed into DSP bram_addr1.
 DSP Report: Generating DSP bram_addr0, operation Mode is: PCIN+(A:0x0):B+(C:0xfffffffffdda).
 DSP Report: operator bram_addr0 is absorbed into DSP bram_addr0.
-INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[2]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[6]'
-INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[3]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[6]'
-INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[4]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[6]'
-INFO: [Synth 8-3886] merging instance 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[5]' (FDRE_1) to 'i_0/PmodJSTK_Int/SPI_Ctrl/sndData_reg[6]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\PmodJSTK_Int/SPI_Ctrl/sndData_reg[6] )
-INFO: [Synth 8-3886] merging instance 'i_0/DispCtrl/AN_reg[4]' (FDR) to 'i_0/DispCtrl/AN_reg[5]'
-INFO: [Synth 8-3886] merging instance 'i_0/DispCtrl/AN_reg[5]' (FDR) to 'i_0/DispCtrl/AN_reg[6]'
-INFO: [Synth 8-3886] merging instance 'i_0/DispCtrl/AN_reg[6]' (FDR) to 'i_0/DispCtrl/AN_reg[7]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\DispCtrl/AN_reg[7] )
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:56 ; elapsed = 00:00:57 . Memory (MB): peak = 1171.371 ; gain = 528.992
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:01:07 . Memory (MB): peak = 1088.184 ; gain = 446.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 ROM:
-+--------------+-----------------+---------------+----------------+
-|Module Name   | RTL Object      | Depth x Width | Implemented As | 
-+--------------+-----------------+---------------+----------------+
-|block_ram     | dout            | 65536x12      | LUT            | 
-|block_ram     | dout            | 65536x12      | LUT            | 
-|PmodJSTK_Demo | fr/addr_reg_reg | 2048x8        | Block RAM      | 
-+--------------+-----------------+---------------+----------------+
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|block_ram   | dout       | 65536x12      | LUT            | 
++------------+------------+---------------+----------------+
 
 
 DSP: Preliminary Mapping  Report (see note below)
-+--------------+-----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name   | DSP Mapping                       | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+--------------+-----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|vga_top       | A*(B:0x96)                        | 16     | 8      | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|PmodJSTK_Demo | PCIN+(A:0x0):B+(C:0x97c)          | 30     | 11     | 12     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|vga_top       | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|PmodJSTK_Demo | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|vga_top       | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|PmodJSTK_Demo | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|vga_top       | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|PmodJSTK_Demo | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-|vga_top       | A*(B:0x28)                        | 16     | 6      | -      | -      | 22     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|PmodJSTK_Demo | PCIN+(A:0x0):B+(C:0xfffffffffdda) | 30     | 11     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
-+--------------+-----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
++-------------+-----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name  | DSP Mapping                       | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-------------+-----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|vga_top      | A*(B:0x96)                        | 16     | 8      | -      | -      | 24     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+(C:0x97c)          | 30     | 11     | 12     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x12)                        | 16     | 5      | -      | -      | 21     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+C                  | 30     | 12     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
+|vga_top      | A*(B:0x28)                        | 16     | 6      | -      | -      | 22     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|vga_top__GB0 | PCIN+(A:0x0):B+(C:0xfffffffffdda) | 30     | 11     | 11     | -      | -1     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++-------------+-----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6837] The timing for the instance vgai_1/i_0/fr/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance vgai_6/i_0/fr/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 
 Report RTL Partitions: 
 +------+-------------------+------------+----------+
 |      |RTL Partition      |Replication |Instances |
 +------+-------------------+------------+----------+
-|1     |vga_top__GB0       |           1|      9119|
-|2     |vga_top__GB1       |           1|      1606|
-|3     |block_ram          |           1|      4918|
-|4     |PmodJSTK_Demo__GC0 |           1|      1656|
+|1     |vga_top__GB0       |           1|     16995|
+|2     |vga_top__GB1       |           1|      4029|
+|3     |vga_top__GB2       |           1|      4302|
+|4     |vga_top__GB3       |           1|       598|
+|5     |vga_top__GB4       |           1|      1989|
+|6     |vga_top__GB5       |           1|      8926|
+|7     |PmodJSTK_Demo__GC0 |           1|      1683|
 +------+-------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
@@ -753,37 +1054,47 @@ Start Applying XDC Timing Constraints
 INFO: [Synth 8-5578] Moved timing constraint from pin 'instance_name/clk_out1' to pin 'instance_name/bbstub_clk_out1/O'
 INFO: [Synth 8-5819] Moved 1 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:07 ; elapsed = 00:01:08 . Memory (MB): peak = 1171.371 ; gain = 528.992
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:01 ; elapsed = 00:01:20 . Memory (MB): peak = 1089.766 ; gain = 448.152
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:09 ; elapsed = 00:01:11 . Memory (MB): peak = 1171.371 ; gain = 528.992
+Finished Timing Optimization : Time (s): cpu = 00:01:04 ; elapsed = 00:01:23 . Memory (MB): peak = 1191.156 ; gain = 549.543
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
 +------+-------------------+------------+----------+
 |      |RTL Partition      |Replication |Instances |
 +------+-------------------+------------+----------+
-|1     |vga_top__GB0       |           1|      8889|
-|2     |vga_top__GB1       |           1|      1583|
-|3     |block_ram          |           1|      4918|
-|4     |PmodJSTK_Demo__GC0 |           1|      1656|
+|1     |vga_top__GB0       |           1|     16661|
+|2     |vga_top__GB1       |           1|      3907|
+|3     |vga_top__GB2       |           1|      4180|
+|4     |vga_top__GB3       |           1|       598|
+|5     |vga_top__GB4       |           1|      1960|
+|6     |vga_top__GB5       |           1|      8926|
+|7     |PmodJSTK_Demo__GC0 |           1|      1683|
 +------+-------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6837] The timing for the instance vga/fr/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance vgai_6/fr/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:13 ; elapsed = 00:01:14 . Memory (MB): peak = 1175.375 ; gain = 532.996
+Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:42 . Memory (MB): peak = 1191.203 ; gain = 549.590
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
-+-+--------------+------------+----------+
-| |RTL Partition |Replication |Instances |
-+-+--------------+------------+----------+
-+-+--------------+------------+----------+
++------+-------------------+------------+----------+
+|      |RTL Partition      |Replication |Instances |
++------+-------------------+------------+----------+
+|1     |vga_top__GB0       |           1|      5718|
+|2     |vga_top__GB1       |           1|      1690|
+|3     |vga_top__GB2       |           1|      1834|
+|4     |vga_top__GB3       |           1|       337|
+|5     |vga_top__GB4       |           1|       699|
+|6     |vga_top__GB5       |           1|      4692|
+|7     |PmodJSTK_Demo__GC0 |           1|       963|
++------+-------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start IO Insertion
 ---------------------------------------------------------------------------------
@@ -796,11 +1107,12 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance vga/fr/addr_reg_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:16 ; elapsed = 00:01:17 . Memory (MB): peak = 1181.156 ; gain = 538.777
+Finished IO Insertion : Time (s): cpu = 00:01:12 ; elapsed = 00:01:48 . Memory (MB): peak = 1193.977 ; gain = 552.363
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -813,7 +1125,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:16 ; elapsed = 00:01:17 . Memory (MB): peak = 1181.156 ; gain = 538.777
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:13 ; elapsed = 00:01:48 . Memory (MB): peak = 1193.977 ; gain = 552.363
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -825,25 +1137,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:16 ; elapsed = 00:01:17 . Memory (MB): peak = 1181.156 ; gain = 538.777
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:14 ; elapsed = 00:01:49 . Memory (MB): peak = 1193.977 ; gain = 552.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:16 ; elapsed = 00:01:17 . Memory (MB): peak = 1181.156 ; gain = 538.777
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:14 ; elapsed = 00:01:49 . Memory (MB): peak = 1193.977 ; gain = 552.363
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:17 ; elapsed = 00:01:18 . Memory (MB): peak = 1181.176 ; gain = 538.797
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:15 ; elapsed = 00:01:50 . Memory (MB): peak = 1197.969 ; gain = 556.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:17 ; elapsed = 00:01:18 . Memory (MB): peak = 1181.176 ; gain = 538.797
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:15 ; elapsed = 00:01:50 . Memory (MB): peak = 1197.969 ; gain = 556.355
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -862,80 +1174,98 @@ Report Cell Usage:
 +------+----------+------+
 |1     |clk_wiz_0 |     1|
 |2     |BUFG      |     4|
-|3     |CARRY4    |   630|
-|4     |DSP48E1   |     5|
+|3     |CARRY4    |  1385|
+|4     |DSP48E1   |    10|
 |5     |DSP48E1_2 |     2|
-|6     |DSP48E1_3 |     3|
-|7     |LUT1      |   379|
-|8     |LUT2      |   755|
-|9     |LUT3      |   325|
-|10    |LUT4      |  1615|
-|11    |LUT5      |  1252|
-|12    |LUT6      |  2213|
-|13    |MUXF7     |   212|
-|14    |MUXF8     |    48|
+|6     |DSP48E1_3 |     8|
+|7     |LUT1      |   189|
+|8     |LUT2      |  1226|
+|9     |LUT3      |   929|
+|10    |LUT4      |  3777|
+|11    |LUT5      |  2676|
+|12    |LUT6      |  3944|
+|13    |MUXF7     |   560|
+|14    |MUXF8     |    82|
 |15    |RAMB18E1  |     1|
 |16    |FDCE      |     3|
 |17    |FDPE      |     4|
-|18    |FDRE      |   629|
-|19    |FDSE      |    90|
-|20    |LD        |    84|
-|21    |IBUF      |     8|
+|18    |FDRE      |  1013|
+|19    |FDSE      |   192|
+|20    |LD        |   133|
+|21    |IBUF      |     5|
 |22    |OBUF      |    32|
 |23    |OBUFT     |     3|
 +------+----------+------+
 
 Report Instance Areas: 
-+------+--------------------+------------------------+------+
-|      |Instance            |Module                  |Cells |
-+------+--------------------+------------------------+------+
-|1     |top                 |                        |  8298|
-|2     |  DispCtrl          |ssdCtrl                 |   156|
-|3     |    BtoBCD          |Binary_To_BCD           |   110|
-|4     |  PmodJSTK_Int      |PmodJSTK                |   214|
-|5     |    SPI_Ctrl        |spiCtrl                 |   140|
-|6     |    SPI_Int         |spiMode0                |    46|
-|7     |    SerialClock     |ClkDiv_66_67kHz         |    28|
-|8     |  debouncer         |debouncer               |    36|
-|9     |  genSndRec         |ClkDiv_5Hz              |    62|
-|10    |  slowerClock       |clock_div               |    43|
-|11    |  vga               |vga_top                 |  7320|
-|12    |    b1              |balloon                 |   978|
-|13    |      lfsr          |LFSR_1                  |    48|
-|14    |    b2              |balloon__parameterized0 |   891|
-|15    |      lfsr          |LFSR_0                  |    48|
-|16    |    b3              |balloon__parameterized1 |   875|
-|17    |      lfsr          |LFSR                    |    48|
-|18    |    bram            |block_ram               |  2703|
-|19    |    fr              |font_rom                |     5|
-|20    |    nolabel_line139 |ascii_converter         |     5|
-|21    |    tcg             |timer_clk_generator     |    52|
-|22    |    vga_controller  |vga_controller_640_60   |  1503|
-+------+--------------------+------------------------+------+
++------+-----------------------+------------------------+------+
+|      |Instance               |Module                  |Cells |
++------+-----------------------+------------------------+------+
+|1     |top                    |                        | 16179|
+|2     |  vga                  |vga_top                 | 15157|
+|3     |    bram               |block_ram               |  4573|
+|4     |    fr                 |font_rom                |     7|
+|5     |    \genblk1[0].b1     |balloon                 |   887|
+|6     |      lfsr             |LFSR_10                 |    48|
+|7     |    \genblk1[1].b1     |balloon__parameterized0 |   924|
+|8     |      lfsr             |LFSR_9                  |    48|
+|9     |    \genblk1[2].b1     |balloon__parameterized1 |   871|
+|10    |      lfsr             |LFSR_8                  |    48|
+|11    |    \genblk1[3].b1     |balloon__parameterized2 |   924|
+|12    |      lfsr             |LFSR_7                  |    48|
+|13    |    \genblk1[4].b1     |balloon__parameterized3 |   944|
+|14    |      lfsr             |LFSR_6                  |    48|
+|15    |    \genblk1[5].b1     |balloon__parameterized4 |   867|
+|16    |      lfsr             |LFSR_5                  |    48|
+|17    |    \genblk1[6].b1     |balloon__parameterized5 |   869|
+|18    |      lfsr             |LFSR_4                  |    48|
+|19    |    \genblk1[7].b1     |balloon__parameterized6 |   899|
+|20    |      lfsr             |LFSR_3                  |    48|
+|21    |    \genblk2[0].bomb1  |bomb                    |   145|
+|22    |      lfsr             |LFSR_2                  |    48|
+|23    |    \genblk2[1].bomb1  |bomb__parameterized0    |   163|
+|24    |      lfsr             |LFSR_1                  |    48|
+|25    |    \genblk2[2].bomb1  |bomb__parameterized1    |   217|
+|26    |      lfsr             |LFSR_0                  |    48|
+|27    |    \genblk2[3].bomb1  |bomb__parameterized2    |   194|
+|28    |      lfsr             |LFSR                    |    54|
+|29    |    nolabel_line147    |ascii_converter         |     5|
+|30    |    tcg                |timer_clk_generator     |    52|
+|31    |    vga_controller     |vga_controller_640_60   |  2194|
+|32    |  DispCtrl             |ssdCtrl                 |   159|
+|33    |    BtoBCD             |Binary_To_BCD           |   113|
+|34    |  PmodJSTK_Int         |PmodJSTK                |   215|
+|35    |    SPI_Ctrl           |spiCtrl                 |   141|
+|36    |    SPI_Int            |spiMode0                |    46|
+|37    |    SerialClock        |ClkDiv_66_67kHz         |    28|
+|38    |  debouncer            |debouncer               |    36|
+|39    |  genSndRec            |ClkDiv_5Hz              |    63|
+|40    |  slowerClock          |clock_div               |    44|
++------+-----------------------+------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:17 ; elapsed = 00:01:18 . Memory (MB): peak = 1181.176 ; gain = 538.797
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:15 ; elapsed = 00:01:50 . Memory (MB): peak = 1197.969 ; gain = 556.355
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:07 ; elapsed = 00:01:15 . Memory (MB): peak = 1181.176 ; gain = 392.199
-Synthesis Optimization Complete : Time (s): cpu = 00:01:17 ; elapsed = 00:01:18 . Memory (MB): peak = 1181.176 ; gain = 538.797
+Synthesis finished with 0 errors, 0 critical warnings and 109 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:03 ; elapsed = 00:01:47 . Memory (MB): peak = 1197.969 ; gain = 408.520
+Synthesis Optimization Complete : Time (s): cpu = 00:01:15 ; elapsed = 00:01:51 . Memory (MB): peak = 1197.969 ; gain = 556.355
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 985 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 2181 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1199.594 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1214.012 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 84 instances were transformed.
-  LD => LDCE: 84 instances
+  A total of 133 instances were transformed.
+  LD => LDCE: 133 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-81 Infos, 111 Warnings, 0 Critical Warnings and 0 Errors encountered.
+103 Infos, 116 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:01:26 . Memory (MB): peak = 1199.594 ; gain = 812.652
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1199.594 ; gain = 0.000
+synth_design: Time (s): cpu = 00:01:24 ; elapsed = 00:02:01 . Memory (MB): peak = 1214.012 ; gain = 827.152
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1214.012 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/PmodJSTK_Demo.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file PmodJSTK_Demo_utilization_synth.rpt -pb PmodJSTK_Demo_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov 30 17:58:47 2022...
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 30 19:49:41 2022...
