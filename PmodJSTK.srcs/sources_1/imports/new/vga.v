@@ -101,6 +101,11 @@ module vga_top(
     wire vga_blank;
     wire pixel_clk;
     
+    // top bar
+    reg[VGA_VAL_SIZE-1:0] top_bar_w = 640;
+    reg[VGA_VAL_SIZE-1:0] top_bar_h = 40;
+    reg[11:0] top_color = 12'h0c9;
+    
     // timer 
     parameter dig_W = 8;
     parameter dig_H = 16;
@@ -146,6 +151,39 @@ module vga_top(
     font_rom fr (pixel_clk, {ascii_val, row_id}, digit_pixel_data);
     ascii_converter (dec_digit, ascii_val);
     
+    // score digits
+//    reg[5:0] score = 6'd36;
+    
+    wire[10:0] sc_d0_pos_x[1:0];
+    wire[10:0] sc_d0_pos_y[1:0];
+    wire[10:0] sc_d1_pos_x[1:0];
+    wire[10:0] sc_d1_pos_y[1:0];
+    
+    assign sc_d0_pos_x[GAME_SCENE] = 610; assign sc_d0_pos_x[GAME_OVER_SCENE] = 310;
+    assign sc_d1_pos_x[GAME_SCENE] = 600; assign sc_d1_pos_x[GAME_OVER_SCENE] = 300;    
+    assign sc_d0_pos_y[GAME_SCENE] = 20; assign sc_d0_pos_y[GAME_OVER_SCENE] = 250;
+    assign sc_d1_pos_y[GAME_SCENE] = 20; assign sc_d1_pos_y[GAME_OVER_SCENE] = 250;
+    
+    // SCORE
+    wire[6:0] score_ascii_vals [5:0];
+    assign score_ascii_vals[0] = 83;
+    assign score_ascii_vals[1] = 67;
+    assign score_ascii_vals[2] = 79;
+    assign score_ascii_vals[3] = 82;
+    assign score_ascii_vals[4] = 69;
+    assign score_ascii_vals[5] = 58;
+    
+    wire[10:0] score_pos_x_start[1:0];
+    wire[10:0] score_pos_y[1:0];
+    
+    assign score_pos_x_start[GAME_SCENE] = 540; assign score_pos_x_start[GAME_OVER_SCENE] = 240;
+    assign score_pos_y[GAME_SCENE] = 20; assign score_pos_y[GAME_OVER_SCENE] = 250;    
+    
+    reg [6:0] ascii_val_txt_reg;
+    wire [6:0] ascii_val_txt;
+    assign ascii_val_txt = ascii_val_txt_reg;
+    wire [7:0] txt_pixel_data;
+    font_rom fr_txt (pixel_clk, {ascii_val_txt, row_id}, txt_pixel_data);
     
     // character
     reg[VGA_VAL_SIZE-1:0] char_pos_x = 550;
@@ -163,8 +201,8 @@ module vga_top(
     reg [15:0] balloon_addr_reg;
     
     parameter NUM_BULLETS = 10;
-    parameter NUM_BALLOONS = 8;
-    parameter NUM_BOMBS = 4;
+    parameter NUM_BALLOONS = 5;
+    parameter NUM_BOMBS = 2;
     
     wire [VGA_VAL_SIZE-1:0] balloon_x [NUM_BALLOONS-1:0];
     wire [VGA_VAL_SIZE-1:0] balloon_y [NUM_BALLOONS-1:0]; 
@@ -173,31 +211,59 @@ module vga_top(
     reg  [VGA_VAL_SIZE-1:0] min [NUM_BALLOONS-1:0]; 
     wire [NUM_BALLOONS-1:0] b_en;
     wire [NUM_BOMBS-1:0] bo_en;
+    wire [VGA_VAL_SIZE*NUM_BOMBS-1:0] bomb_x_all;
+    wire [VGA_VAL_SIZE*NUM_BOMBS-1:0] bomb_y_all;
+    reg  [9:0] score;
+    wire score_detect;
+    wire [NUM_BALLOONS:0] score_detect_temp;
+    
+    assign score_detect_temp[0] = 0;
     
     wire frame_end;
     assign frame_end = (vga_hcnt == 0 && vga_vcnt == 0) ;
     
+    genvar m ;
+    generate
+//    always@(*) begin
+        for (m=0; m<NUM_BOMBS; m=m+1) begin
+            assign bomb_x_all[VGA_VAL_SIZE*(m+1)-1:VGA_VAL_SIZE*m] = bomb_x[m];
+            assign bomb_y_all[VGA_VAL_SIZE*(m+1)-1:VGA_VAL_SIZE*m] = bomb_y[m];
+        end
+//    end
+    endgenerate
+//    assign bomb_x_all = {{bomb_x}};
+
+    localparam TADJUST = 1_000_000/(40*480);
+    
     genvar k;
     generate
-        for (k=0; k<NUM_BALLOONS; k=k+1) begin
-            balloon #(.START(50*k+k*k+5),.NUM_BULLETS(NUM_BULLETS)) b1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[k]), .y(balloon_y[k]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[k]));
+        for (k=0; k<NUM_BALLOONS; k=k+1) begin : balloon
+            balloon #(.START(50*k+k*k+5),.NUM_BULLETS(NUM_BULLETS), .NUM_BOMBS(NUM_BOMBS)) b1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[k]), .y(balloon_y[k]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .bomb_x(bomb_x_all), .bomb_y(bomb_y_all), .en(b_en[k]));
 //            balloon #(.START(150),.NUM_BULLETS(NUM_BULLETS)) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[1]));
 //            balloon #(.START(400),.NUM_BULLETS(NUM_BULLETS)) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[2]));
 //            balloon #(.START(500),.NUM_BULLETS(NUM_BULLETS)) b4 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[3]), .y(balloon_y[3]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[3]));
+              assign score_detect_temp[k+1] = score_detect_temp[k] | balloon[k].b1.score_detected;
         end
     endgenerate
     
     genvar l;
     generate
-        for (l=0; l<NUM_BOMBS; l=l+1) begin
-            bomb #(.START(50*l+l*l+5),.NUM_BULLETS(NUM_BULLETS)) bomb1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(bomb_x[l]), .y(bomb_y[l]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(bo_en[l]));
+        for (l=0; l<NUM_BOMBS; l=l+1) begin //50*l+l*l+5
+            bomb #(.START(TADJUST*(60/NUM_BOMBS)*(l+1)-10),.NUM_BULLETS(NUM_BULLETS)) bomb1 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(bomb_x[l]), .y(bomb_y[l]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(bo_en[l]));
 //            balloon #(.START(150),.NUM_BULLETS(NUM_BULLETS)) b2 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[1]), .y(balloon_y[1]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[1]));
 //            balloon #(.START(400),.NUM_BULLETS(NUM_BULLETS)) b3 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[2]), .y(balloon_y[2]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[2]));
 //            balloon #(.START(500),.NUM_BULLETS(NUM_BULLETS)) b4 (.rst(rst), .clk(pixel_clk), .frame_end(frame_end), .x(balloon_x[3]), .y(balloon_y[3]), .bullet_x(bullet_pos_x), .bullet_y(bullet_pos_y), .en(b_en[3]));
         end
     endgenerate
     
+    assign score_detect = score_detect_temp[NUM_BALLOONS];
     
+    always@(posedge pixel_clk )begin
+        if(rst)
+            score <= 0;
+        else if(score_detect)
+            score <= score + 1;
+    end
     
 //    always@(*) begin
 //        min[0] <= 40;
@@ -256,6 +322,28 @@ module vga_top(
     
 //    wire [VGA_VAL_SIZE-1:0] bomb_x = 20; // remove these numbers and wire to a bomb generator 
 //    wire [VGA_VAL_SIZE-1:0] bomb_y = 100;
+
+    // brick
+    parameter brick_w = 55;
+    parameter brick_h = 22;
+    parameter brick_start_addr = bomb2_start_addr + bomb_w*bomb_h;
+    
+    wire [9:0] brick_x[11:0]; 
+    wire [VGA_VAL_SIZE-1:0] brick_y;    
+
+    assign brick_x[0] = 0;
+    assign brick_x[1] = 55;
+    assign brick_x[2] = 110;
+    assign brick_x[3] = 165;
+    assign brick_x[4] = 220;
+    assign brick_x[5] = 275;
+    assign brick_x[6] = 330;
+    assign brick_x[7] = 385;
+    assign brick_x[8] = 440;
+    assign brick_x[9] = 495;
+    assign brick_x[10] = 550;
+    assign brick_x[11] = 605;
+    assign brick_y = 458;
 
     // bram
     reg[15:0] bram_addr;
@@ -342,7 +430,7 @@ module vga_top(
          end
         // Image to be displayed
          else if (scene == GAME_SCENE) begin
-//         else begin
+
             if ((vga_hcnt >= char_pos_x && vga_hcnt < (char_pos_x + char_w)) &&
                 (vga_vcnt >= char_pos_y && vga_vcnt < (char_pos_y + char_h))) begin                
                 bram_addr <= char_start_addr + (((vga_vcnt - char_pos_y )*char_w) + (vga_hcnt - char_pos_x)); 
@@ -356,15 +444,32 @@ module vga_top(
                 VGA_B <= 4'h0;
             end
                  
-
-            for (i=0; i<NUM_BALLOONS; i=i+1) begin //(timer_counter*NUM_BALLOONS>i*60) &&
-                if (  b_en[i] && ((vga_hcnt >= balloon_x[i] && vga_hcnt < (balloon_x[i] + balloon_w)) &&
+            // balloons
+            for (i=0; i<NUM_BALLOONS; i=i+1) begin
+                if ( b_en[i] && ((vga_hcnt >= balloon_x[i] && vga_hcnt < (balloon_x[i] + balloon_w)) &&
                     (vga_vcnt >= balloon_y[i] && vga_vcnt < (balloon_y[i] + balloon_h)))) begin                
                           bram_addr <= balloon_addr_reg + (((vga_vcnt - balloon_y[i])*balloon_w) + (vga_hcnt - balloon_x[i])); 
                           VGA_R <= pixel_data[11:8];
                           VGA_G <= pixel_data[7:4];
                           VGA_B <= pixel_data[3:0];
                 end
+            end
+            //bomb
+            for (i=0; i<NUM_BOMBS; i=i+1) begin
+                if ((vga_hcnt >= bomb_x[i] && vga_hcnt < (bomb_x[i] + bomb_w)) &&
+                    (vga_vcnt >= bomb_y[i] && vga_vcnt < (bomb_y[i] + bomb_h))) begin                
+                      bram_addr <= bomb_addr_reg + (((vga_vcnt - bomb_y[i])*bomb_w) + (vga_hcnt - bomb_x[i])); 
+                      VGA_R <= pixel_data[11:8];
+                      VGA_G <= pixel_data[7:4];
+                      VGA_B <= pixel_data[3:0];
+                end
+            end
+            // top bar
+            if ((vga_hcnt >= 0 && vga_hcnt < (0 + top_bar_w)) &&
+                (vga_vcnt >= 0 && vga_vcnt < (0 + top_bar_h))) begin                 
+                  VGA_R <= top_color[11:8];
+                  VGA_G <= top_color[7:4];
+                  VGA_B <= top_color[3:0];
             end
             
             
@@ -390,9 +495,9 @@ module vga_top(
                  
                  case (digit_pixel_data[col_id])       
                     0: begin           
-                        VGA_R <= 4'h0;
-                        VGA_G <= 4'h0;
-                        VGA_B <= 4'h0;
+                        VGA_R <= top_color[11:8];
+                        VGA_G <= top_color[7:4];
+                        VGA_B <= top_color[3:0];
                         end
                     1: begin           
                         VGA_R <= 4'hf;
@@ -411,9 +516,9 @@ module vga_top(
                  
                  case (digit_pixel_data[col_id])       
                     0: begin           
-                        VGA_R <= 4'h0;
-                        VGA_G <= 4'h0;
-                        VGA_B <= 4'h0;
+                        VGA_R <= top_color[11:8];
+                        VGA_G <= top_color[7:4];
+                        VGA_B <= top_color[3:0];
                         end
                     1: begin           
                         VGA_R <= 4'hf;
@@ -423,17 +528,87 @@ module vga_top(
                  endcase             
             end
             
-            //bomb
-            for (i=0; i<NUM_BOMBS; i=i+1) begin //(timer_counter*NUM_BOMBS>i*60) &&
-                if (  (vga_hcnt >= bomb_x[i] && vga_hcnt < (bomb_x[i] + bomb_w)) &&
-                    (vga_vcnt >= bomb_y[i] && vga_vcnt < (bomb_y[i] + bomb_h))) begin                
-                      bram_addr <= bomb_addr_reg + (((vga_vcnt - bomb_y[i])*bomb_w) + (vga_hcnt - bomb_x[i])); 
-                      VGA_R <= pixel_data[11:8];
-                      VGA_G <= pixel_data[7:4];
-                      VGA_B <= pixel_data[3:0];
+            //score digits
+            // score digit 0
+           if ((vga_hcnt >= sc_d0_pos_x[GAME_SCENE] && vga_hcnt < (sc_d0_pos_x[GAME_SCENE] + dig_W) ) &&
+             (vga_vcnt >= sc_d0_pos_y[GAME_SCENE] && vga_vcnt < sc_d0_pos_y[GAME_SCENE] + dig_H)) begin
+                 dec_digit <= score % 10;
+                 row_id <= (vga_vcnt - sc_d0_pos_y[GAME_SCENE]);
+                 col_id <= dig_W - (vga_hcnt - sc_d0_pos_x[GAME_SCENE]); 
+                 
+                 case (digit_pixel_data[col_id])       
+                    0: begin           
+                        VGA_R <= top_color[11:8];
+                        VGA_G <= top_color[7:4];
+                        VGA_B <= top_color[3:0];
+                        end
+                    1: begin           
+                        VGA_R <= 4'hf;
+                        VGA_G <= 4'hf;
+                        VGA_B <= 4'hf;
+                        end
+                 endcase             
+            end
+            // score digit 1
+            else if ((vga_hcnt >= sc_d1_pos_x[GAME_SCENE] && vga_hcnt < (sc_d1_pos_x[GAME_SCENE] + dig_W) ) &&
+             (vga_vcnt >= sc_d1_pos_y[GAME_SCENE] && vga_vcnt < sc_d1_pos_y[GAME_SCENE] + dig_H)) begin
+
+                 dec_digit <= (score/10) % 10;
+                 row_id <= (vga_vcnt - sc_d1_pos_y[GAME_SCENE]);
+                 col_id <= dig_W - (vga_hcnt - sc_d1_pos_x[GAME_SCENE]); 
+                 
+                 case (digit_pixel_data[col_id])       
+                    0: begin           
+                        VGA_R <= top_color[11:8];
+                        VGA_G <= top_color[7:4];
+                        VGA_B <= top_color[3:0];
+                        end
+                    1: begin           
+                        VGA_R <= 4'hf;
+                        VGA_G <= 4'hf;
+                        VGA_B <= 4'hf;
+                        end
+                 endcase             
+            end
+            
+            //score
+            for (i=0; i<6; i=i+1) begin
+                if ((vga_hcnt >= score_pos_x_start[GAME_SCENE] + i*10 && vga_hcnt < (score_pos_x_start[GAME_SCENE] + i*10 + dig_W) ) &&
+                 (vga_vcnt >= score_pos_y[GAME_SCENE] && vga_vcnt < score_pos_y[GAME_SCENE] + dig_H)) begin
+                     ascii_val_txt_reg <= score_ascii_vals[i];
+                     row_id <= (vga_vcnt - score_pos_y[GAME_SCENE]);
+                     col_id <= dig_W - (vga_hcnt - (score_pos_x_start[GAME_SCENE] + i*10));                     
+                     case (txt_pixel_data[col_id])       
+                        0: begin           
+                            VGA_R <= top_color[11:8];
+                            VGA_G <= top_color[7:4];
+                            VGA_B <= top_color[3:0];
+                            end
+                        1: begin           
+                            VGA_R <= 4'hf;
+                            VGA_G <= 4'hf;
+                            VGA_B <= 4'hf;
+                            end
+                     endcase             
                 end
             end
+            
+
+            
+            //bricks
+            for (i=0; i<12; i=i+1) begin
+                if ((vga_hcnt >= brick_x[i] && vga_hcnt < (brick_x[i] + brick_w) &&
+                    (vga_vcnt >= brick_y && vga_vcnt < (brick_y + brick_h)))) begin                
+                          bram_addr <= brick_start_addr + (((vga_vcnt - brick_y)*brick_w) + (vga_hcnt - brick_x[i])); 
+                          VGA_R <= pixel_data[11:8];
+                          VGA_G <= pixel_data[7:4];
+                          VGA_B <= pixel_data[3:0];
+                end
+            end
+            
+
         end
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         else begin // scene == game over scene
             if ((vga_hcnt >= gameover_x && vga_hcnt < (gameover_x + gameover_w)) &&
                 (vga_vcnt >= gameover_y && vga_vcnt < (gameover_y + gameover_h))) begin                
@@ -446,6 +621,70 @@ module vga_top(
                 VGA_R <= 4'h0;
                 VGA_G <= 4'h0;
                 VGA_B <= 4'h0;
+            end
+             //score digits
+            // score digit 0
+           if ((vga_hcnt >= sc_d0_pos_x[GAME_OVER_SCENE] && vga_hcnt < (sc_d0_pos_x[GAME_OVER_SCENE] + dig_W) ) &&
+             (vga_vcnt >= sc_d0_pos_y[GAME_OVER_SCENE] && vga_vcnt < sc_d0_pos_y[GAME_OVER_SCENE] + dig_H)) begin
+                 dec_digit <= score % 10;
+                 row_id <= (vga_vcnt - sc_d0_pos_y[GAME_OVER_SCENE]);
+                 col_id <= dig_W - (vga_hcnt - sc_d0_pos_x[GAME_OVER_SCENE]); 
+                 
+                 case (digit_pixel_data[col_id])       
+                    0: begin           
+                        VGA_R <= 4'h0;
+                        VGA_G <= 4'h0;
+                        VGA_B <= 4'h0;
+                        end
+                    1: begin           
+                        VGA_R <= 4'hf;
+                        VGA_G <= 4'hf;
+                        VGA_B <= 4'hf;
+                        end
+                 endcase             
+            end
+            // score digit 1
+            else if ( (vga_hcnt >= sc_d1_pos_x[GAME_OVER_SCENE] && vga_hcnt < (sc_d1_pos_x[GAME_OVER_SCENE] + dig_W) ) &&
+             (vga_vcnt >= sc_d1_pos_y[GAME_OVER_SCENE] && vga_vcnt < sc_d1_pos_y[GAME_OVER_SCENE] + dig_H)) begin
+
+                 dec_digit <= (score/10) % 10;
+                 row_id <= (vga_vcnt - sc_d1_pos_y[GAME_OVER_SCENE]);
+                 col_id <= dig_W - (vga_hcnt - sc_d1_pos_x[GAME_OVER_SCENE]); 
+                 
+                 case (digit_pixel_data[col_id])       
+                    0: begin           
+                        VGA_R <= 4'h0;
+                        VGA_G <= 4'h0;
+                        VGA_B <= 4'h0;
+                        end
+                    1: begin           
+                        VGA_R <= 4'hf;
+                        VGA_G <= 4'hf;
+                        VGA_B <= 4'hf;
+                        end
+                 endcase             
+            end
+            
+            //score
+            for (i=0; i<6; i=i+1) begin
+                if ((vga_hcnt >= score_pos_x_start[GAME_OVER_SCENE] + i*10 && vga_hcnt < (score_pos_x_start[GAME_OVER_SCENE] + i*10 + dig_W) ) &&
+                 (vga_vcnt >= score_pos_y[GAME_OVER_SCENE] && vga_vcnt < score_pos_y[GAME_OVER_SCENE] + dig_H)) begin
+                     ascii_val_txt_reg <= score_ascii_vals[i];
+                     row_id <= (vga_vcnt - score_pos_y[GAME_OVER_SCENE]);
+                     col_id <= dig_W - (vga_hcnt - (score_pos_x_start[GAME_OVER_SCENE] + i*10));                     
+                     case (txt_pixel_data[col_id])       
+                        0: begin           
+                            VGA_R <= 4'h0;
+                            VGA_G <= 4'h0;
+                            VGA_B <= 4'h0;
+                            end
+                        1: begin           
+                            VGA_R <= 4'hf;
+                            VGA_G <= 4'hf;
+                            VGA_B <= 4'hf;
+                            end
+                     endcase             
+                end
             end
         end         
         

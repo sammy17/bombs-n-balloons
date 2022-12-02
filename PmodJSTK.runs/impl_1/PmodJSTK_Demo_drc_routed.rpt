@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date         : Wed Nov 30 19:51:53 2022
+| Date         : Thu Dec  1 19:28:22 2022
 | Host         : ECE-PHO115-26 running 64-bit major release  (build 9200)
 | Command      : report_drc -file PmodJSTK_Demo_drc_routed.rpt -pb PmodJSTK_Demo_drc_routed.pb -rpx PmodJSTK_Demo_drc_routed.rpx
 | Design       : PmodJSTK_Demo
@@ -24,14 +24,15 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 30
+             Violations found: 26
 +----------+----------+--------------------------------+------------+
 | Rule     | Severity | Description                    | Violations |
 +----------+----------+--------------------------------+------------+
 | CFGBVS-3 | Warning  | CONFIG_VOLTAGE Design Property | 1          |
-| DPIP-1   | Warning  | Input pipelining               | 18         |
-| DPOP-1   | Warning  | PREG Output pipelining         | 10         |
-| PDRC-153 | Warning  | Gated clock check              | 1          |
+| DPIP-1   | Warning  | Input pipelining               | 13         |
+| DPOP-1   | Warning  | PREG Output pipelining         | 8          |
+| DPOP-2   | Warning  | MREG Output pipelining         | 1          |
+| PDRC-153 | Warning  | Gated clock check              | 3          |
 +----------+----------+--------------------------------+------------+
 
 2. REPORT DETAILS
@@ -68,67 +69,42 @@ Related violations: <none>
 
 DPIP-1#6 Warning
 Input pipelining  
-DSP vga/bram_addr0__5 input vga/bram_addr0__5/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr1 input vga/bram_addr1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#7 Warning
 Input pipelining  
-DSP vga/bram_addr0__6 input vga/bram_addr0__6/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr2 input vga/bram_addr2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#8 Warning
 Input pipelining  
-DSP vga/bram_addr0__7 input vga/bram_addr0__7/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr2__0 input vga/bram_addr2__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#9 Warning
 Input pipelining  
-DSP vga/bram_addr1 input vga/bram_addr1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr2__1 input vga/bram_addr2__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#10 Warning
 Input pipelining  
-DSP vga/bram_addr2 input vga/bram_addr2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr2__2 input vga/bram_addr2__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#11 Warning
 Input pipelining  
-DSP vga/bram_addr2__0 input vga/bram_addr2__0/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr2__3 input vga/bram_addr2__3/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#12 Warning
 Input pipelining  
-DSP vga/bram_addr2__1 input vga/bram_addr2__1/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+DSP vga/bram_addr2__4 input vga/bram_addr2__4/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPIP-1#13 Warning
 Input pipelining  
-DSP vga/bram_addr2__2 input vga/bram_addr2__2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#14 Warning
-Input pipelining  
-DSP vga/bram_addr2__3 input vga/bram_addr2__3/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#15 Warning
-Input pipelining  
-DSP vga/bram_addr2__4 input vga/bram_addr2__4/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#16 Warning
-Input pipelining  
 DSP vga/bram_addr2__5 input vga/bram_addr2__5/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#17 Warning
-Input pipelining  
-DSP vga/bram_addr2__6 input vga/bram_addr2__6/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-Related violations: <none>
-
-DPIP-1#18 Warning
-Input pipelining  
-DSP vga/bram_addr2__7 input vga/bram_addr2__7/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
 Related violations: <none>
 
 DPOP-1#1 Warning
@@ -168,22 +144,27 @@ Related violations: <none>
 
 DPOP-1#8 Warning
 PREG Output pipelining  
-DSP vga/bram_addr0__6 output vga/bram_addr0__6/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DSP vga/bram_addr2__5 output vga/bram_addr2__5/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
 Related violations: <none>
 
-DPOP-1#9 Warning
-PREG Output pipelining  
-DSP vga/bram_addr0__7 output vga/bram_addr0__7/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-Related violations: <none>
-
-DPOP-1#10 Warning
-PREG Output pipelining  
-DSP vga/bram_addr0__8 output vga/bram_addr0__8/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+DPOP-2#1 Warning
+MREG Output pipelining  
+DSP vga/bram_addr2__5 multiplier stage vga/bram_addr2__5/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
 Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net vga/vga_controller/scene_reg[0] is a gated clock net sourced by a combinational pin vga/vga_controller/col_id_reg[2]_i_2/O, cell vga/vga_controller/col_id_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net vga/vga_controller/E[0] is a gated clock net sourced by a combinational pin vga/vga_controller/ascii_val_txt_reg_reg[6]_i_2/O, cell vga/vga_controller/ascii_val_txt_reg_reg[6]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net vga/vga_controller/scene_reg_0[0] is a gated clock net sourced by a combinational pin vga/vga_controller/dec_digit_reg[3]_i_2/O, cell vga/vga_controller/dec_digit_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net vga/vga_controller/scene_reg_3[0] is a gated clock net sourced by a combinational pin vga/vga_controller/col_id_reg[2]_i_2/O, cell vga/vga_controller/col_id_reg[2]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

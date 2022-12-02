@@ -201,7 +201,7 @@ module PmodJSTK_Demo(
 			
 
 			// Use state of switch 0 to select output of X position or Y position data to SSD
-			assign posData = (SW[1]==1) ? {bullet_en,b_idx} : (SW[0] == 1'b1) ? {jstkData[9:8], jstkData[23:16]} : {jstkData[25:24], jstkData[39:32]};
+			assign posData = (SW[1]==1) ? vga.score : (SW[0] == 1'b1) ? {jstkData[9:8], jstkData[23:16]} : {jstkData[25:24], jstkData[39:32]};
 			
 `ifdef NOJSTK
 

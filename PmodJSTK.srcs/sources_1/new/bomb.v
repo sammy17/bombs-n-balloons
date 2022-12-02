@@ -94,6 +94,11 @@ always@(posedge clk) begin
         x <= x;
         y <= -11'd20;
     end
+    else if (~mov_en) begin
+        frame_count <= frame_count;
+        y <= y;
+        x <= x_loc_range;
+    end
 //    else if (mov_en) begin
 //        frame_count <= frame_count;
 //        x <= x;

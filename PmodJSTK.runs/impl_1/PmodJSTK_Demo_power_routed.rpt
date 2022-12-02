@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-| Date             : Wed Nov 30 19:52:02 2022
+| Date             : Thu Dec  1 19:28:29 2022
 | Host             : ECE-PHO115-26 running 64-bit major release  (build 9200)
 | Command          : report_power -file PmodJSTK_Demo_power_routed.rpt -pb PmodJSTK_Demo_power_summary_routed.pb -rpx PmodJSTK_Demo_power_routed.rpx
 | Design           : PmodJSTK_Demo
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.253        |
+| Total On-Chip Power (W)  | 0.206        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.155        |
-| Device Static (W)        | 0.098        |
+| Dynamic (W)              | 0.108        |
+| Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
-| Max Ambient (C)          | 83.8         |
-| Junction Temperature (C) | 26.2         |
+| Max Ambient (C)          | 84.1         |
+| Junction Temperature (C) | 25.9         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |     0.053 |    16142 |       --- |             --- |
-|   LUT as Logic |     0.051 |     9890 |     63400 |           15.60 |
-|   CARRY4       |     0.001 |     1385 |     15850 |            8.74 |
-|   F7/F8 Muxes  |    <0.001 |      642 |     63400 |            1.01 |
-|   Register     |    <0.001 |     1345 |    126800 |            1.06 |
+| Slice Logic    |     0.035 |    12551 |       --- |             --- |
+|   LUT as Logic |     0.034 |     7762 |     63400 |           12.24 |
+|   CARRY4       |     0.001 |     1127 |     15850 |            7.11 |
+|   Register     |    <0.001 |     1136 |    126800 |            0.90 |
+|   F7/F8 Muxes  |    <0.001 |      341 |     63400 |            0.54 |
 |   BUFG         |    <0.001 |        4 |        32 |           12.50 |
-|   Others       |     0.000 |       73 |       --- |             --- |
-| Signals        |     0.068 |     8959 |       --- |             --- |
+|   Others       |     0.000 |       53 |       --- |             --- |
+| Signals        |     0.039 |     7405 |       --- |             --- |
 | Block RAM      |    <0.001 |      0.5 |       135 |            0.37 |
-| DSPs           |     0.004 |       20 |       240 |            8.33 |
+| DSPs           |     0.003 |       15 |       240 |            6.25 |
 | I/O            |     0.028 |       41 |       210 |           19.52 |
-| Static Power   |     0.098 |          |           |                 |
-| Total          |     0.253 |          |           |                 |
+| Static Power   |     0.097 |          |           |                 |
+| Total          |     0.206 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,7 +75,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.143 |       0.127 |      0.015 |
+| Vccint    |       1.000 |     0.096 |       0.081 |      0.015 |
 | Vccaux    |       1.800 |     0.019 |       0.001 |      0.018 |
 | Vcco33    |       3.300 |     0.012 |       0.008 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -141,24 +141,20 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+----------------------+-----------+
-| Name                 | Power (W) |
-+----------------------+-----------+
-| PmodJSTK_Demo        |     0.155 |
-|   DispCtrl           |     0.002 |
-|     BtoBCD           |     0.001 |
-|   vga                |     0.122 |
-|     bram             |     0.064 |
-|     genblk1[0].b1    |     0.001 |
-|     genblk1[1].b1    |     0.001 |
-|     genblk1[2].b1    |     0.001 |
-|     genblk1[3].b1    |     0.001 |
-|     genblk1[4].b1    |     0.001 |
-|     genblk1[5].b1    |     0.001 |
-|     genblk1[6].b1    |     0.001 |
-|     genblk1[7].b1    |     0.002 |
-|     genblk2[1].bomb1 |     0.001 |
-|     vga_controller   |     0.008 |
-+----------------------+-----------+
++--------------------+-----------+
+| Name               | Power (W) |
++--------------------+-----------+
+| PmodJSTK_Demo      |     0.108 |
+|   DispCtrl         |     0.002 |
+|     BtoBCD         |     0.001 |
+|   vga              |     0.076 |
+|     balloon[0].b1  |     0.001 |
+|     balloon[1].b1  |     0.001 |
+|     balloon[2].b1  |     0.001 |
+|     balloon[3].b1  |     0.001 |
+|     balloon[4].b1  |     0.001 |
+|     bram           |     0.030 |
+|     vga_controller |     0.011 |
++--------------------+-----------+
 
 

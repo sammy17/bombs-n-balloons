@@ -20,17 +20,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module balloon( rst, clk, frame_end, x, y, bullet_x, bullet_y, en);
+module balloon( rst, clk, frame_end, x, y, bullet_x, bullet_y, bomb_x, bomb_y, en);
 parameter START = 4;
 parameter MAXV = 480;
 parameter MAXH = 640;
 parameter NUM_BULLETS = 10;
+parameter NUM_BOMBS = 2;
 //parameter MINX = 40;
 //parameter MAXX = 550;
 
 input clk, frame_end, rst;
 //input [11*NUM_BULLETS-1:0] min;
 input [11*NUM_BULLETS-1:0] bullet_x, bullet_y;
+input [11*NUM_BOMBS-1:0] bomb_x, bomb_y;
 output reg [10:0] x;
 output reg [10:0] y;
 output en;
@@ -38,6 +40,8 @@ output en;
 
 localparam BWIDTH = 18;
 localparam BHEIGHT = 24;
+localparam BOMBH = 24;
+localparam BOMBW = 16;
 
 //`include "bl_colors.vh"
 reg  [31:0] frame_count;
@@ -45,6 +49,11 @@ wire [10:0] x_loc;
 wire mov_en, change_x;
 wire [10:0] x_loc_range;
 reg [NUM_BULLETS-1:0] en_r;
+reg [NUM_BOMBS-1:0] reverse_r;
+wire reverse;
+reg score_detected;
+reg balloon_exit;
+
 
 LFSR  lfsr
          (.i_Clk(clk),
@@ -79,7 +88,9 @@ always@(posedge clk) begin
     else if (frame_end) begin
         frame_count <= frame_count + 1;
         x <= x;
-        if (mov_en)
+        if (mov_en & reverse)
+            y <= y + 1;
+        else if (mov_en)
             y <= y - 1;
         else 
             y <= y;
@@ -90,6 +101,11 @@ always@(posedge clk) begin
         y <= y;
     end
     else if (y==-11'd20) begin
+        frame_count <= frame_count;
+        x <= x;
+        y <= MAXV+20;
+    end
+    else if (y==MAXV+21 & reverse) begin
         frame_count <= frame_count;
         x <= x;
         y <= MAXV+20;
@@ -128,21 +144,47 @@ generate
 endgenerate
 
 
+genvar j;
+// collision with bomb detect
+generate
+    for (j=0; j<NUM_BOMBS; j=j+1) begin
+        always@(posedge clk)  begin
+            if (rst) begin
+                reverse_r[j] <= 0;
+            end
+            else if  ( ( (bomb_x[((j+1)*11)-1:j*11]-BWIDTH<x) & (bomb_x[((j+1)*11)-1:j*11]+BOMBW > x) ) & (bomb_y[((j+1)*11)-1:j*11]+BOMBH -y < 3) ) begin
+                reverse_r[j] <= 1;
+            end
+            else if (reverse & y==MAXV+20) begin
+                reverse_r[j] <= 0;
+            end
+            else begin
+                reverse_r[j] <= reverse_r[j];
+            end
+        end
+    end
+endgenerate
+
 assign en = &en_r;
+assign reverse = |reverse_r;
 
-//reg [2:0] count = 0;
-//wire in_balloon;
+always@(posedge clk)begin
+    if(rst)begin
+        score_detected <= 0;
+        balloon_exit <= 1;
+    end
+    else if(~en && score_detected==0 && balloon_exit==1)begin
+        score_detected <= 1;
+        balloon_exit <= 0;
+    end
+    else if(score_detected == 1)
+        score_detected <= 0;
+    else if(change_x)
+        balloon_exit <= 1;    
+    else
+        score_detected <= 0;
+//        balloon_exit <= balloon_exit;
+end
 
-//assign en = (cx-x)*(cx-x) + (cy-y)*(cy-y) < RAD;
-
-//always@(cy)
-//    if (cy==0) begin
-//        count = count + 1;
-//        color = colors[count];
-//    end
-
-//assign r = color[11:8];
-//assign g = color[7:4];
-//assign b = color[3:0];
 
 endmodule
