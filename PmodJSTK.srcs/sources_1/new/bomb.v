@@ -20,24 +20,32 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module bomb( rst, clk, frame_end, min, x, y, bullet_x, bullet_y, en);
+module bomb( rst, clk, frame_end, min, x, y, bullet_x, bullet_y, char_y, en, game_over);
 parameter START = 4;
 parameter MAXV = 480;
 parameter MAXH = 640;
 parameter NUM_BULLETS = 10;
+
 //parameter MINX = 40;
 //parameter MAXX = 550;
 
 input clk, frame_end, rst;
 input [11*NUM_BULLETS-1:0] min;
 input [11*NUM_BULLETS-1:0] bullet_x, bullet_y;
+input [11*NUM_BULLETS-1:0] char_y;
 output reg [10:0] x;
 output reg [10:0] y;
 output en;
+output reg game_over;
 //output reg [11:0] color;
 
-localparam BWIDTH = 18;
+
+
+localparam BWIDTH = 16;
 localparam BHEIGHT = 24;
+localparam CHAR_X = 550;
+localparam CHARH = 44;
+localparam CHARW = 40;
 
 //`include "bl_colors.vh"
 reg  [31:0] frame_count;
@@ -45,6 +53,7 @@ wire [10:0] x_loc;
 wire mov_en, change_x;
 wire [10:0] x_loc_range;
 reg [NUM_BULLETS-1:0] en_r;
+reg h_en;
 
 LFSR  lfsr
          (.i_Clk(clk),
@@ -65,6 +74,18 @@ LFSR  lfsr
 //    end
 //end
 
+// For checking whether the bomb hit the char and drive killed
+always@(posedge clk) begin
+    if (rst)
+        game_over <= 0;
+    else if (game_over)
+        game_over <= 1;
+    else if (h_en & x+BWIDTH>=CHAR_X & x<CHAR_X+CHARW & y+BHEIGHT > char_y & y < char_y + CHARH)
+        game_over <= 1; 
+        
+end
+
+
 assign mov_en = (frame_count >= START) ? 1'b1 : 1'b0;
 assign change_x = (y==MAXV) ? 1'b1 : 1'b0;
 
@@ -75,11 +96,25 @@ always@(posedge clk) begin
         frame_count <= 0;
         x <= x_loc_range;
         y <= -11'd20;
+        h_en <= 0;
+    end
+    else if (game_over) begin
+        frame_count <= frame_count;
+        x <= x;
+        y <= y;
     end
     else if (frame_end) begin
         frame_count <= frame_count + 1;
         x <= x;
-        if (mov_en)
+        if (mov_en & ~en & x<MAXH+BWIDTH+10) begin
+            x <= x + 5;
+            h_en <= 1;
+        end else if (mov_en & h_en & x>=MAXH+BWIDTH) begin
+            y <= MAXV;
+            h_en <= 0;
+        end else if (mov_en & h_en &  x<MAXH+BWIDTH+10) 
+            x <= x + 5;
+        else if (mov_en)
             y <= y + 1;
         else 
             y <= y;

@@ -106,7 +106,7 @@ always@(posedge clk) begin
         y <= MAXV+20;
     end
     else if (y==MAXV+21 & reverse) begin
-        frame_count <= frame_count;
+        frame_count <= 0;
         x <= x;
         y <= MAXV+20;
     end

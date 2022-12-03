@@ -181,12 +181,12 @@ module PmodJSTK_Demo(
 			assign sndData = {8'b100000, {SW[1], SW[2]}};
 
 			// Assign PmodJSTK button status to LED[2:0] & Making the character
-		    parameter upper_limit = 5;
-	        parameter lower_limit = 430;
+		    parameter upper_limit = 40;
+	        parameter lower_limit = 430-44;
 	        parameter button_lower_limit = 153;
 	        parameter button_upper_limit = 858;
-	        parameter upper_threshold = 700;
-	        parameter lower_threshold = 200;
+	        parameter upper_threshold = 700;//458-44;//700; 
+	        parameter lower_threshold = 200;//40;//200;
 	        
 	        
 		    reg [10:0] char_y;
@@ -227,6 +227,11 @@ module PmodJSTK_Demo(
                               bullet_pos_y[((i+1)*11)-1:i*11] <= char_y + 50 ;//- 100;
         //				      bullet_done <= 0;
                               bullet_en[i] <= 0;
+                        end
+                        else if (vga.scene==1) begin
+                              bullet_en[i] <= 0;
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11];
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
                         end
                         else if (bullet_pos_x[((i+1)*11)-1:i*11]==0) begin
         //		              bullet_done <= 1;
@@ -308,6 +313,11 @@ module PmodJSTK_Demo(
         //				      bullet_done <= 0;
                               bullet_en[i] <= 0;
                         end
+                        else if (vga.scene==1) begin
+                              bullet_en[i] <= 0;
+                              bullet_pos_x[((i+1)*11)-1:i*11] <= bullet_pos_x[((i+1)*11)-1:i*11];
+                              bullet_pos_y[((i+1)*11)-1:i*11] <= bullet_pos_y[((i+1)*11)-1:i*11];
+                        end
                         else if (bullet_pos_x[((i+1)*11)-1:i*11]==0) begin
         //		              bullet_done <= 1;
                               bullet_en[i] <= 0;
@@ -348,6 +358,8 @@ module PmodJSTK_Demo(
             always@(posedge clk_out) begin
                 if (RST)
                     char_y <= upper_limit+200;
+                else if (vga.scene==1) // disable moving when Game Over
+                    char_y <= char_y;
                 else if (button_up && char_y > upper_limit)
                     char_y <= char_y - 1;
                 else if (button_down && char_y < lower_limit)
@@ -371,7 +383,10 @@ module PmodJSTK_Demo(
 				else begin
 //				    LED <= {jstkData[1], {jstkData[2], jstkData[0]}};
 				    y_data <= {{1'b0},jstkData[25:24], jstkData[39:32]};
-	                if (y_data > upper_threshold)   
+				    
+				    if (vga.scene==1) // disable moving when Game Over
+                        char_y <= char_y;
+	                else if (y_data > upper_threshold)   
 	                begin
 	                    if(char_y > upper_limit)
 	                    begin
