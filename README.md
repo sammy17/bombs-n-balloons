@@ -3,7 +3,7 @@ Bombs & Balloons is a simple balloon-shooter game designed and implemented on FP
 We have implemented this game for the project requirement in EC551 at Boston University. 
 
 Full Vivado project is included with this repo which is targetted for Digilent Nexys A7 FPGA development board. 
-However, this game can be synthesized and run on any FPGA development board by just changing the constriants file.
+However, this game can be synthesized and run on any FPGA development board that has a VGA output port and onboard buttons by just changing the constriants file. See the following section for the detailed requirements. 
 
 ## Requirements
 Following components are needed to run the game as it is in this repo. 
