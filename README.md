@@ -36,6 +36,6 @@ git clone https://github.com/sammy17/bombs-n-balloons.git
 6. Play the game! 
 
  ## Developers:
- Farbin Fayza
- Farhan Tanvir Khan
- Chathura Rajapaksha
+   Farbin Fayza  
+   Farhan Tanvir Khan  
+   Chathura Rajapaksha
