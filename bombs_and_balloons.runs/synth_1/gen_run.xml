@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1670043612">
-  <File Type="RDS-DCP" Name="PmodJSTK_Demo.dcp"/>
-  <File Type="PA-TCL" Name="PmodJSTK_Demo.tcl"/>
-  <File Type="REPORTS-TCL" Name="PmodJSTK_Demo_reports.tcl"/>
-  <File Type="RDS-RDS" Name="PmodJSTK_Demo.vds"/>
-  <File Type="RDS-UTIL" Name="PmodJSTK_Demo_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="PmodJSTK_Demo_utilization_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1670212913">
+  <File Type="VDS-TIMING-PB" Name="bombs_and_balloons_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="bombs_and_balloons_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="bombs_and_balloons.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="bombs_and_balloons_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="bombs_and_balloons_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="bombs_and_balloons_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="bombs_and_balloons.vds"/>
+  <File Type="REPORTS-TCL" Name="bombs_and_balloons_reports.tcl"/>
+  <File Type="PA-TCL" Name="bombs_and_balloons.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/Binary_To_BCD.v">
@@ -172,7 +175,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="PmodJSTK_Demo"/>
+      <Option Name="TopModule" Val="bombs_and_balloons"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
@@ -209,5 +212,4 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2015"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>

@@ -4,13 +4,17 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 //
 
+echo "This script was generated under a different operating system."
+echo "Please update the PATH variable below, before executing this script"
+exit
+
 var WshShell = new ActiveXObject( "WScript.Shell" );
 var ProcEnv = WshShell.Environment( "Process" );
 var PathVal = ProcEnv("PATH");
 if ( PathVal.length == 0 ) {
-  PathVal = "C:/Xilinx/SDK/2019.1/bin;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/lib/nt64;C:/Xilinx/Vivado/2019.1/bin;";
+  PathVal = "/ad/eng/opt/xilinx/Vivado/2019.1/SDK/2019.1/bin:/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/ids_lite/ISE/bin/lin64;/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/bin;";
 } else {
-  PathVal = "C:/Xilinx/SDK/2019.1/bin;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/lib/nt64;C:/Xilinx/Vivado/2019.1/bin;" + PathVal;
+  PathVal = "/ad/eng/opt/xilinx/Vivado/2019.1/SDK/2019.1/bin:/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/ids_lite/ISE/bin/lin64;/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/bin;" + PathVal;
 }
 
 ProcEnv("PATH") = PathVal;
@@ -23,7 +27,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log PmodJSTK_Demo.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PmodJSTK_Demo.tcl" );
+         "-log bombs_and_balloons.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bombs_and_balloons.tcl" );
 
 
 

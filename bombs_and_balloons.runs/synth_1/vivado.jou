@@ -1,12 +1,12 @@
 #-----------------------------------------------------------
 # Vivado v2019.1 (64-bit)
-# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Sat Dec  3 00:00:18 2022
-# Process ID: 20032
-# Current directory: C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1
-# Command line: vivado.exe -log PmodJSTK_Demo.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source PmodJSTK_Demo.tcl
-# Log file: C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1/PmodJSTK_Demo.vds
-# Journal file: C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1\vivado.jou
+# Start of session at: Sun Dec  4 23:01:56 2022
+# Process ID: 142268
+# Current directory: /projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1
+# Command line: vivado -log bombs_and_balloons.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bombs_and_balloons.tcl
+# Log file: /projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1/bombs_and_balloons.vds
+# Journal file: /projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source PmodJSTK_Demo.tcl -notrace
+source bombs_and_balloons.tcl -notrace

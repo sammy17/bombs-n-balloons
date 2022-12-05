@@ -96,12 +96,12 @@ module bombs_and_balloons(
              wire slow_clock;
              wire clk_out, clk_out_4;
              													
-			 clk_wiz_0 instance_name // For slowing down the clock
-                            (
-            // Clock out ports
-            .clk_out1(slow_clock),     // output clk_out1
-            // Clock in ports
-            .clk_in1(CLK));
+//			 clk_wiz_0 instance_name // For slowing down the clock
+//                            (
+//            // Clock out ports
+//            .clk_out1(slow_clock),     // output clk_out1
+//            // Clock in ports
+//            .clk_in1(CLK));
 	// ===========================================================================
 	// 							  Parameters, Regsiters, and Wires
 	// ===========================================================================

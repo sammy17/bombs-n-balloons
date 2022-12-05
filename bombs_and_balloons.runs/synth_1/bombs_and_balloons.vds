@@ -1,13 +1,14 @@
-
-*** Running vivado
-    with args -log bombs_and_balloons.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bombs_and_balloons.tcl
-
-
-****** Vivado v2019.1 (64-bit)
-  **** SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
-  **** IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sun Dec  4 23:01:56 2022
+# Process ID: 142268
+# Current directory: /projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1
+# Command line: vivado -log bombs_and_balloons.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bombs_and_balloons.tcl
+# Log file: /projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1/bombs_and_balloons.vds
+# Journal file: /projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
 source bombs_and_balloons.tcl -notrace
 create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:09 . Memory (MB): peak = 2693.891 ; gain = 4.062 ; free physical = 3701 ; free virtual = 112068
 Command: synth_design -top bombs_and_balloons -part xc7a100tcsg324-1

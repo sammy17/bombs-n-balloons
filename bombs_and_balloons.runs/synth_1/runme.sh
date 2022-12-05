@@ -6,14 +6,10 @@
 # Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 # 
 
-echo "This script was generated under a different operating system."
-echo "Please update the PATH and LD_LIBRARY_PATH variables below, before executing this script"
-exit
-
 if [ -z "$PATH" ]; then
-  PATH=C:/Xilinx/SDK/2019.1/bin;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2019.1/bin
+  PATH=/ad/eng/opt/xilinx/Vivado/2019.1/SDK/2019.1/bin:/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/ids_lite/ISE/bin/lin64:/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/bin
 else
-  PATH=C:/Xilinx/SDK/2019.1/bin;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2019.1/ids_lite/ISE/lib/nt64:C:/Xilinx/Vivado/2019.1/bin:$PATH
+  PATH=/ad/eng/opt/xilinx/Vivado/2019.1/SDK/2019.1/bin:/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/ids_lite/ISE/bin/lin64:/ad/eng/opt/xilinx/Vivado/2019.1/Vivado/2019.1/bin:$PATH
 fi
 export PATH
 
@@ -24,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/chath/bullet_added/PmodJSTK/PmodJSTK.runs/synth_1'
+HD_PWD='/projectnb/risc-v/chath/ec551/bombs-n-balloons/bombs_and_balloons.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log PmodJSTK_Demo.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source PmodJSTK_Demo.tcl
+EAStep vivado -log bombs_and_balloons.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bombs_and_balloons.tcl
