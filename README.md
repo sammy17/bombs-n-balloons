@@ -48,6 +48,6 @@ We have a python script that takes a set of sprites as input and produces a veri
 For more details about this code, read the comments in `pixel_converter.py`. 
 
  ## Developers:
-   Farbin Fayza  (ffayza@bu.edu) 
-   Farhan Tanvir Khan  (ftk@bu.edu) 
-   Chathura Rajapaksha   (chath@bu.edu)
+ -  Farbin Fayza  (ffayza@bu.edu) 
+ -  Farhan Tanvir Khan  (ftk@bu.edu) 
+ -  Chathura Rajapaksha   (chath@bu.edu)
