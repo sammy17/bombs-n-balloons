@@ -40,14 +40,14 @@ Now follow the rest of the instructions in Getting started section.
 
 ### Using the BRAM verilog module generator for storing sprites
 We have a python script that takes a set of sprites as input and produces a verilog module that stores the pixel values of all the sprites in BRAM blocks. To use this script,
-1. Put your images in the "sprites_bram_generator" folder
-2. In the python script "sprites_bram_generator/pixel_converter.py", set the image names in the img_dirs array.
-3. Set the desired height and width of the images in im_h and im_w arrays respectively.
-4. Run the script and "block_ram.v" will be generated.
+1. Put your images in the `sprites_bram_generator` folder
+2. In the python script `sprites_bram_generator/pixel_converter.py`, set the image names in the `img_dirs` array.
+3. Set the desired height and width of the images in `im_h` and `im_w` arrays respectively.
+4. Run the script and `block_ram.v` will be generated.
 
-For more details about this code, read the comments in "pixel_converter.py". 
+For more details about this code, read the comments in `pixel_converter.py`. 
 
  ## Developers:
-   Farbin Fayza  (ffayza@bu.edu)
-   Farhan Tanvir Khan  (ftk@bu.edu)
+   Farbin Fayza  (ffayza@bu.edu) 
+   Farhan Tanvir Khan  (ftk@bu.edu) 
    Chathura Rajapaksha   (chath@bu.edu)
