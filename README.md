@@ -38,7 +38,7 @@ Following changes are required before bitstream generation if you want to use th
 
 Now follow the rest of the instructions in Getting started section. 
 
-### Using the BRAM verilog module generator for storing sprites
+### BRAM verilog module generator for storing sprites
 We have a python script that takes a set of sprites as input and produces a verilog module that stores the pixel values of all the sprites in BRAM blocks. To use this script,
 1. Put your images in the `sprites_bram_generator` folder
 2. In the python script `sprites_bram_generator/pixel_converter.py`, set the image names in the `img_dirs` array.
