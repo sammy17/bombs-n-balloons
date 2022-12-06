@@ -11,17 +11,10 @@ Following components are needed to run the game as it is in this repo.
 2. Digilent Joystick (https://digilent.com/shop/pmod-jstk2-two-axis-joystick/)
 3. VGA cable and a monitor that has a VGA interface
 
+Bombs & Ballons can be played with the onboard buttons in the FPGA board instead of the joystick. Please refer to the [Running the game without the joystick](https://github.com/sammy17/bombs-n-balloons/edit/main/README.md#running-the-game-without-the-joystick) for the changes required for this. 
 If you want to target a different board you can use the same source files and change the constraints file according to your board. 
 
-### Running the game without the joystick
-Bombs & Balloons can be played using the onboard buttons in the FPGA board instead of the joystick. 
-Following change is required before bitstream generation if you want to use the onboard buttons. 
 
-Uncomment the `define NOJSTK line at https://github.com/sammy17/bombs-n-balloons/blob/6152e6a6e4e00bf8bc2bac355a25489abe88c7a4/bombs_and_balloons.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v#L47
-
-Change the constraints if required to use the onboard buttons (no change required for the Nexys A7 board).
-
-Now follow the rest of the instructions in Getting started section. 
 
 ## Getting started
 1. Clone the project and open the project in Vivado. 
@@ -34,6 +27,16 @@ git clone https://github.com/sammy17/bombs-n-balloons.git
 4. Connect the VGA port of the FPGA to a monitor and connect the joystick if available. 
 5. Reset the game: reset is connect to the 4th switch (SW[3]) in the Nexys A7 board (feel free to change this before bitstream generation if needed).
 6. Play the game! 
+
+### Running the game without the joystick
+Bombs & Balloons can be played using the onboard buttons in the FPGA board instead of the joystick. 
+Following changes are required before bitstream generation if you want to use the onboard buttons. 
+
+1. Uncomment the `define NOJSTK line at https://github.com/sammy17/bombs-n-balloons/blob/6152e6a6e4e00bf8bc2bac355a25489abe88c7a4/bombs_and_balloons.srcs/sources_1/imports/Desktop/PmodJSTK/PmodJSTK.srcs/PmodJSTK_Demo.v#L47
+
+2. Uncomment the following three lines in the constriant file. https://github.com/sammy17/bombs-n-balloons/blob/9d5d23ad40dfa8664d0fbbc36f0eb9ea6b89246e/bombs_and_balloons.srcs/constrs_1/new/Nexys-A7-100T-Master.xdc#L153 https://github.com/sammy17/bombs-n-balloons/blob/9d5d23ad40dfa8664d0fbbc36f0eb9ea6b89246e/bombs_and_balloons.srcs/constrs_1/new/Nexys-A7-100T-Master.xdc#L154 https://github.com/sammy17/bombs-n-balloons/blob/9d5d23ad40dfa8664d0fbbc36f0eb9ea6b89246e/bombs_and_balloons.srcs/constrs_1/new/Nexys-A7-100T-Master.xdc#L155 Replace these with relevant constraints if you are using a different board than Nexys A7. 
+
+Now follow the rest of the instructions in Getting started section. 
 
  ## Developers:
    Farbin Fayza  
